@@ -49,6 +49,6 @@ define "Rationale":
 
 define "Get Card Indicator":
   if "Is Recommendation Applicable" then
-    'warning'
+    'asap'
   else
-    'info'
+    'routine'

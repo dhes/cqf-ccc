@@ -1,0 +1,156 @@
+{
+	"PlanDefinition": {
+		"id": {
+			"_value": "ColorectalCancerScreeningCDS"
+		},
+		"meta": {
+			"profile": {
+				"_value": "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-recommendationdefinition"
+			}
+		},
+		"name": {
+			"_value": "ColorectalCancerScreeningCDS"
+		},
+		"title": {
+			"_value": "Colorectal Cancer Screening CDS"
+		},
+		"description": {
+			"_value": "Colorectal Cancer Screening CDS"
+		},
+		"type": {
+			"coding": {
+				"system": {
+					"_value": "http://terminology.hl7.org/CodeSystem/plan-definition-type"
+				},
+				"code": {
+					"_value": "eca-rule"
+				},
+				"display": {
+					"_value": "ECA Rule"
+				}
+			}
+		},
+		"status": {
+			"_value": "draft"
+		},
+		"experimental": {
+			"_value": "true"
+		},
+		"date": {
+			"_value": "2019-05-15"
+		},
+		"extension": [
+			{
+				"valueCode": {
+					"_value": "shareable"
+				},
+				"_url": "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability"
+			},
+			{
+				"valueCode": {
+					"_value": "computable"
+				},
+				"_url": "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability"
+			},
+			{
+				"valueCode": {
+					"_value": "executable"
+				},
+				"_url": "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability"
+			},
+			{
+				"valueCode": {
+					"_value": "publishable"
+				},
+				"_url": "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability"
+			}
+		],
+		"library": {
+			"_value": "http://fhir.org/guides/cqf/ccc/Library/ColorectalCancerScreeningCDS"
+		},
+		"action": {
+			"title": {
+				"_value": "Colorectal Cancer Screening"
+			},
+			"description": {
+				"_value": "The U.S. Preventive Services Task Force (2016) recommends screening for colorectal cancer starting at age 50 years and continuing until age 75 years. This is a Grade A recommendation (U.S. Preventive Services Task Force, 2016)."
+			},
+			"documentation": {
+				"type": {
+					"_value": "documentation"
+				},
+				"display": {
+					"_value": "U.S. Preventive Services Task Force Final Recommendation Statement Colorectal Cancer: Screening"
+				},
+				"url": {
+					"_value": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/colorectal-cancer-screening"
+				}
+			},
+			"trigger": {
+				"type": {
+					"_value": "named-event"
+				},
+				"name": {
+					"_value": "patient-view"
+				}
+			},
+			"condition": {
+				"kind": {
+					"_value": "applicability"
+				},
+				"expression": {
+					"language": {
+						"_value": "text/cql-identifier"
+					},
+					"expression": {
+						"_value": "Is Recommendation Applicable"
+					}
+				}
+			},
+			"dynamicValue": [
+				{
+					"path": {
+						"_value": "action.description"
+					},
+					"expression": {
+						"language": {
+							"_value": "text/cql-identifier"
+						},
+						"expression": {
+							"_value": "Get Card Detail"
+						}
+					}
+				},
+				{
+					"path": {
+						"_value": "action.title"
+					},
+					"expression": {
+						"language": {
+							"_value": "text/cql-identifier"
+						},
+						"expression": {
+							"_value": "Get Card Summary"
+						}
+					}
+				},
+				{
+					"path": {
+						"_value": "action.priority"
+					},
+					"expression": {
+						"language": {
+							"_value": "text/cql-identifier"
+						},
+						"expression": {
+							"_value": "Get Card Indicator"
+						}
+					}
+				}
+			]
+		},
+		"_xmlns": "http://hl7.org/fhir",
+		"_xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+		"_xsi:schemaLocation": "http://hl7.org/fhir ../../../../../../HL7/FHIR-Spec/4.0.0/fhir-all-xsd/fhir-all.xsd"
+	}
+}

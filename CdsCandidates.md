@@ -17,3 +17,8 @@ These existing CDS projects are in progress and have an evidence base. Some are 
 
 
 Please also see [this](https://build.fhir.org/ig/cqframework/ecqm-content-qicore-2023/libraries.html) list of 2024 CQM libraries. 
+
+|Topic|$measure-evaluate working|$apply working?|CDS Hook working?|
+|---|---|---|---|
+|Colorectal Cancer Screening|yes|yes|no|
+|Breast Cancer Screening|no|no|no|

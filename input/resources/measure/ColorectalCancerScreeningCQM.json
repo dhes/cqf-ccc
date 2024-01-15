@@ -123,7 +123,7 @@
         "valueString": "Flexible Sigmoidoscopy Performed"
       }, {
         "url": "statement",
-        "valueString": "/*\n@description: Completed Flexible Sigmoidoscopy Procedures\n*/\ndefine \"Flexible Sigmoidoscopy Performed\":\n  [Procedure: Cx.\"Flexible Sigmoidoscopy\"] FlexibleSigmoidoscopy\n\t\twhere FlexibleSigmoidoscopy.status = 'completed'"
+        "valueString": "define \"Flexible Sigmoidoscopy Performed\":\n  [Procedure: Cx.\"Flexible Sigmoidoscopy\"] FlexibleSigmoidoscopy\n\t\twhere FlexibleSigmoidoscopy.status = 'completed'"
       }, {
         "url": "displaySequence",
         "valueInteger": 7
@@ -183,7 +183,7 @@
         "valueString": "Has Appropriate Colorectal Cancer Screening"
       }, {
         "url": "statement",
-        "valueString": "/*\n  FOBT within 1 year\n    or FIT DNA within 3 years\n    or CT Colonography within 5 years\n    or Flexible Sigmoidoscopy within 5 years\n    or Colonoscopy within 10 years\n*/\ndefine \"Has Appropriate Colorectal Cancer Screening\":\n  exists \"Fecal Occult Blood Test Result Within 1 Year\"\n    or exists \"Fecal Immunochemical Test DNA Result Within 3 Years\"\n    or exists \"CT Colonography Performed Within 5 Years\"\n    or exists \"Flexible Sigmoidoscopy Performed Within 5 Years\"\n    or exists \"Colonoscopy Performed Within 10 Years\""
+        "valueString": "define \"Has Appropriate Colorectal Cancer Screening\":\n  exists \"Fecal Occult Blood Test Result Within 1 Year\"\n    or exists \"Fecal Immunochemical Test DNA Result Within 3 Years\"\n    or exists \"CT Colonography Performed Within 5 Years\"\n    or exists \"Flexible Sigmoidoscopy Performed Within 5 Years\"\n    or exists \"Colonoscopy Performed Within 10 Years\""
       }, {
         "url": "displaySequence",
         "valueInteger": 11
@@ -369,7 +369,7 @@
   "title": "Colorectal Cancer Screening CQM",
   "status": "draft",
   "experimental": true,
-  "date": "2023-12-26T04:04:44-06:00",
+  "date": "2024-01-14T09:27:02-06:00",
   "publisher": "National Committee for Quality Assurance",
   "description": "Percentage of adults 50-75 years of age who had appropriate screening for colorectal cancer",
   "purpose": "Illustration",

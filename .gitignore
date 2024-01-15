@@ -20,6 +20,8 @@ Thumbs.db
 # backup files #
 ################
 *.bak
-/bundles/measure/ColorectalCancerScreeningCQM/ColorectalCancerScreeningCQM-files
-/bundles/plandefinition/ColorectalCancerScreeningCDS/ColorectalCancerScreeningCDS-files
+# /bundles/measure/ColorectalCancerScreeningCQM/ColorectalCancerScreeningCQM-files
+# /bundles/plandefinition/ColorectalCancerScreeningCDS/ColorectalCancerScreeningCDS-files
 /input-cache
+bundles/**
+gofsh/**

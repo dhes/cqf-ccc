@@ -1,78 +1,86 @@
-<PlanDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../../../../../HL7/FHIR-Spec/4.0.0/fhir-all-xsd/fhir-all.xsd">
-	<id value="ColorectalCancerScreeningCDS"/>
-	<meta>
-		<profile value="http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-recommendationdefinition"/>
-	</meta>
-	<name value="ColorectalCancerScreeningCDS"/>
-	<title value="Colorectal Cancer Screening CDS"/>
-	<description value="Colorectal Cancer Screening CDS"/>
-	<type>
-		<coding>
-			<system value="http://terminology.hl7.org/CodeSystem/plan-definition-type"/>
-			<code value="eca-rule"/>
-			<display value="ECA Rule"/>
-		</coding>
-	</type>
-	<status value="draft"/>
-	<experimental value="true"/>
-	<date value="2019-05-15"/>
-	<extension
-             url="http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability">
-    <valueCode value="shareable"/>
+<PlanDefinition xmlns='http://hl7.org/fhir'>
+  <id value='ColorectalCancerScreeningCDS'/>
+  <meta>
+    <profile value='http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-recommendationdefinition'/>
+  </meta>
+  <extension url='http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability'>
+    <valueCode value='shareable'/>
   </extension>
-  <extension
-             url="http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability">
-    <valueCode value="computable"/>
+  <extension url='http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability'>
+    <valueCode value='computable'/>
   </extension>
-  <extension
-             url="http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability">
-    <valueCode value="executable"/>
+  <extension url='http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability'>
+    <valueCode value='executable'/>
   </extension>
-  <extension
-             url="http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability">
-    <valueCode value="publishable"/>
+  <extension url='http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability'>
+    <valueCode value='publishable'/>
   </extension>
-	<library value="http://fhir.org/guides/cqf/ccc/Library/ColorectalCancerScreeningCDS"/>
-	<action>
-		<title value="Colorectal Cancer Screening"/>
-		<description value="The U.S. Preventive Services Task Force (2016) recommends screening for colorectal cancer starting at age 50 years and continuing until age 75 years. This is a Grade A recommendation (U.S. Preventive Services Task Force, 2016)."/>
-		<documentation>
-				<type value="documentation"/>
-				<display value="U.S. Preventive Services Task Force Final Recommendation Statement Colorectal Cancer: Screening"/>
-				<url value="https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/colorectal-cancer-screening"/>
-		</documentation>
-		<trigger>
-			<type value="named-event"/>
-			<name value="patient-view"/>
-		</trigger>
-		<condition>
-			<kind value="applicability"/>
-			<expression>
-				<language value="text/cql-identifier"/>
-				<expression value="Is Recommendation Applicable"/>
-			</expression>
-		</condition>
-		<!-- dynamic card elements -->
-		<dynamicValue>
-			<path value="action.description"/>
-			<expression>
-				<language value="text/cql-identifier"/>
-				<expression value="Get Card Detail"/>
-			</expression>
-		</dynamicValue>
-		<dynamicValue>
-			<path value="action.title"/>
-			<expression>
-				<language value="text/cql-identifier"/>
-				<expression value="Get Card Summary"/>
-			</expression>
-		</dynamicValue>
-		<dynamicValue>
-			<path value="action.priority"/>
-			<expression>
-				<language value="text/cql-identifier"/>
-				<expression value="Get Card Indicator"/>
-			</expression>
-		</dynamicValue>
-	</action>
+  <name value='ColorectalCancerScreeningCDS'/>
+  <title value='Colorectal Cancer Screening CDS'/>
+  <type>
+    <coding>
+      <system value='http://terminology.hl7.org/CodeSystem/plan-definition-type'/>
+      <code value='eca-rule'/>
+      <display value='ECA Rule'/>
+    </coding>
+  </type>
+  <status value='draft'/>
+  <experimental value='true'/>
+  <date value='2019-05-15'/>
+  <description value='Colorectal Cancer Screening CDS'/>
+  <library value='http://fhir.org/guides/cqf/ccc/Library/ColorectalCancerScreeningCDS'/>
+  <action>
+    <trigger>
+      <name value='patient-view'/>
+      <type value='named-event'/>
+    </trigger>
+    <title value='Colorectal Cancer Screening'/>
+    <description value='The U.S. Preventive Services Task Force (2016) recommends screening for colorectal cancer starting at age 50 years and continuing until age 75 years. This is a Grade A recommendation (U.S. Preventive Services Task Force, 2016).'/>
+    <documentation>
+      <type value='documentation'/>
+      <display value='U.S. Preventive Services Task Force Final Recommendation Statement Colorectal Cancer: Screening'/>
+      <url value='https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/colorectal-cancer-screening'/>
+    </documentation>
+    <condition>
+      <kind value='applicability'/>
+      <expression>
+        <expression value='Is Recommendation Applicable'/>
+        <language value='text/cql-identifier'/>
+      </expression>
+    </condition>
+    <selectionBehavior value='exactly-one'/>
+    <dynamicValue>
+      <path value='action.description'/>
+      <expression>
+        <expression value='Get Card Detail'/>
+        <language value='text/cql-identifier'/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value='action.title'/>
+      <expression>
+        <expression value='Get Card Summary'/>
+        <language value='text/cql-identifier'/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value='action.priority'/>
+      <expression>
+        <expression value='Get Card Indicator'/>
+        <language value='text/cql-identifier'/>
+      </expression>
+    </dynamicValue>
+    <action>
+      <description value='Will perform colorectal cancer  screening'/>
+    </action>
+    <action>
+      <description value='Will not perform colorectal cancer  screening at this time - Snooze 1 month.'/>
+    </action>
+    <action>
+      <description value='Will not perform colorectal cancer  screening at this time - Snooze 12 months.'/>
+    </action>
+    <action>
+      <description value='Will not perform colorectal cancer  screening at this time - patient declined.'/>
+    </action>
+  </action>
 </PlanDefinition>

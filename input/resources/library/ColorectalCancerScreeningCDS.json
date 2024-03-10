@@ -30,7 +30,7 @@
       "valueString": "XML"
     }, {
       "name": "analyzeDataRequirements",
-      "valueBoolean": false
+      "valueBoolean": true
     }, {
       "name": "collapseDataRequirements",
       "valueBoolean": true
@@ -147,12 +147,12 @@
     "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.12.1020"
   }, {
     "type": "depends-on",
-    "display": "Value set Malignant Neoplasm of Colon",
-    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.12.1001"
-  }, {
-    "type": "depends-on",
     "display": "Value set Active Condition",
     "resource": "http://fhir.org/guides/cqf/common/ValueSet/active-condition"
+  }, {
+    "type": "depends-on",
+    "display": "Value set Malignant Neoplasm of Colon",
+    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.12.1001"
   }, {
     "type": "depends-on",
     "display": "Value set Total Colectomy",
@@ -227,6 +227,11 @@
     "codeFilter": [ {
       "path": "code",
       "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1019"
+    }, {
+      "path": "status",
+      "code": [ {
+        "code": "completed"
+      } ]
     } ]
   }, {
     "type": "Procedure",
@@ -235,6 +240,11 @@
     "codeFilter": [ {
       "path": "code",
       "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.12.1038"
+    }, {
+      "path": "status",
+      "code": [ {
+        "code": "completed"
+      } ]
     } ]
   }, {
     "type": "Procedure",
@@ -243,6 +253,11 @@
     "codeFilter": [ {
       "path": "code",
       "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1010"
+    }, {
+      "path": "status",
+      "code": [ {
+        "code": "completed"
+      } ]
     } ]
   }, {
     "type": "Procedure",
@@ -251,6 +266,11 @@
     "codeFilter": [ {
       "path": "code",
       "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.12.1020"
+    }, {
+      "path": "status",
+      "code": [ {
+        "code": "completed"
+      } ]
     } ]
   }, {
     "type": "Condition",
@@ -259,6 +279,11 @@
     "codeFilter": [ {
       "path": "code",
       "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.12.1001"
+    }, {
+      "path": "clinicalStatus",
+      "valueSet": "http://fhir.org/guides/cqf/common/ValueSet/active-condition"
+    }, {
+      "path": "verificationStatus"
     } ]
   } ],
   "content": [ {

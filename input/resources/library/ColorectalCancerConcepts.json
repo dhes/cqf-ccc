@@ -27,7 +27,7 @@
       "valueString": "XML"
     }, {
       "name": "analyzeDataRequirements",
-      "valueBoolean": false
+      "valueBoolean": true
     }, {
       "name": "collapseDataRequirements",
       "valueBoolean": true

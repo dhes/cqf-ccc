@@ -1,6 +1,12 @@
 {
   "resourceType": "PlanDefinition",
   "id": "ColorectalCancerScreeningCDS",
+  "name": "ColorectalCancerScreeningCDS",
+  "title": "Colorectal Cancer Screening CDS",
+  "description": "Colorectal Cancer Screening CDS",
+  "status": "draft",
+  "experimental": true,
+  "date": "2019-05-15",
   "meta": {
     "profile": [
       "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-recommendationdefinition"
@@ -24,8 +30,6 @@
       "valueCode": "publishable"
     }
   ],
-  "name": "ColorectalCancerScreeningCDS",
-  "title": "Colorectal Cancer Screening CDS",
   "type": {
     "coding": [
       {
@@ -35,9 +39,6 @@
       }
     ]
   },
-  "status": "draft",
-  "experimental": true,
-  "description": "Colorectal Cancer Screening CDS",
   "library": [
     "http://fhir.org/guides/cqf/ccc/Library/ColorectalCancerScreeningCDS"
   ],
@@ -106,6 +107,5 @@
         }
       ]
     }
-  ],
-  "date": "2019-05-15"
+  ]
 }

@@ -2,7 +2,7 @@
     "resourceType": "Encounter",
     "id": "should-not-screen-ccs-4",
     "subject": {
-        "reference": "Patient/should-not-screen-ccs"
+        "reference": "Patient/ccs-should-not-screen"
     },
     "meta": {
         "profile": [

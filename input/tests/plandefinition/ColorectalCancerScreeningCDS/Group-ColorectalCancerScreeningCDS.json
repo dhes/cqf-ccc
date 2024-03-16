@@ -10,12 +10,12 @@
   "actual": true,
   "member": [ {
     "entity": {
-      "reference": "Patient/should-not-screen-ccs",
+      "reference": "Patient/ccs-should-not-screen",
       "display": "Don Blitz"
     }
   }, {
     "entity": {
-      "reference": "Patient/should-screen-ccs",
+      "reference": "Patient/ccs-should-screen",
       "display": "Ben Dere"
     }
   } ]

@@ -2,7 +2,7 @@
   "resourceType": "Encounter",
   "id": "should-screen-ccs-1",
   "subject": {
-      "reference": "Patient/should-screen-ccs"
+      "reference": "Patient/ccs-should-screen"
   },
   "meta": {
     "profile": [

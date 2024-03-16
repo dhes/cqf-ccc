@@ -11,7 +11,7 @@
       "status": "draft",
       "intent": "proposal",
       "subject": {
-        "reference": "Patient/should-not-screen-ccs"
+        "reference": "Patient/ccs-should-not-screen"
       },
       "activity": [
         {
@@ -37,7 +37,7 @@
         "text": "Colorectal Cancer Screening Not Recommended"
       },
       "subject": {
-        "reference": "Patient/should-not-screen-ccs"
+        "reference": "Patient/ccs-should-not-screen"
       },
       "supportingInfo": [
         {
@@ -49,7 +49,7 @@
   "moduleCanonical": "http://fhir.org/guides/cqf/ccc/PlanDefinition/ColorectalCancerScreeningCDS",
   "status": "success",
   "subject": {
-    "reference": "Patient/should-not-screen-ccs"
+    "reference": "Patient/ccs-should-not-screen"
   },
   "result": {
     "reference": "#expected"

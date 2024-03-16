@@ -17,7 +17,7 @@
         ]
     },
     "subject": {
-        "reference": "Patient/should-screen-ccs"
+        "reference": "Patient/ccs-should-screen"
     },
     "performedPeriod": {
         "start": "2011-12-30T12:00:00",

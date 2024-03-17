@@ -16,7 +16,7 @@
     <valueCode value='publishable'/>
   </extension>
   <name value='ColorectalCancerScreeningCDS'/>
-  <title value='Colorectal Cancer Screening CDS'/>
+  <title value='Colorectal cancer screening'/>
   <type>
     <coding>
       <system value='http://terminology.hl7.org/CodeSystem/plan-definition-type'/>

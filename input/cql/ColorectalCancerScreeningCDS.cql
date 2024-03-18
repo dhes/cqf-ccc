@@ -19,6 +19,18 @@ parameter "Measurement Period" Interval<DateTime>
 
 context Patient
 
+define "Alive": 
+  case 
+    // when Patient.deceased = true then false //redundant
+    when Patient.deceased = false then true
+    // when "Null Patient.deceased assumed to mean alive" = true and Patient.deceased is null then true // default is false. Your dead unless you the records says you are not. 
+    else false
+  end
+
+define Active: 
+  if Patient.active = true then true
+	else false
+
 define "Is Recommendation Applicable":
   AgeInYearsAt(start of "Measurement Period") between 50 and 75
     and not CCE."Has Appropriate Colorectal Cancer Screening"

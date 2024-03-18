@@ -59,5 +59,7 @@
       }
     ],
   "birthDate": "1968-01-01",
-  "gender": "male"
+  "gender": "male", 
+  "active": true, 
+  "deceasedBoolean": false
 }

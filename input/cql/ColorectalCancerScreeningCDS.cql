@@ -32,10 +32,12 @@ define Active:
 	else false
 
 define "Is Recommendation Applicable":
-  AgeInYearsAt(start of "Measurement Period") between 50 and 75
-    and not CCE."Has Appropriate Colorectal Cancer Screening"
-    and not CCE."Has Active Malignant Neoplasm"
-    and not exists (CCE."Total Colectomy Performed")
+  Alive
+  and Active
+  and AgeInYearsAt(start of "Measurement Period") between 50 and 75
+  and not CCE."Has Appropriate Colorectal Cancer Screening"
+  and not CCE."Has Active Malignant Neoplasm"
+  and not exists (CCE."Total Colectomy Performed")
 
 define "Get Card Summary":
   if "Is Recommendation Applicable" then

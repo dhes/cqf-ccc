@@ -41,15 +41,15 @@ define "Is Recommendation Applicable":
 
 define "Get Card Summary":
   if "Is Recommendation Applicable" then
-    'Recommend appropriate colorectal cancer screening'
+    'Recommend colorectal cancer screening'
   else
-    'Patient has appropriate colorectal cancer screening'
+    'Colorectal cancer screening up to date'
 
 define "Get Card Detail":
   if "Is Recommendation Applicable" then
     'Patient meets the inclusion criteria for appropriate colorectal cancer screening, but has ' + Rationale + '.'
   else
-    'Patient has appropriate colorectal cancer screening: ' + Rationale + '.'
+    'Colorectal cancer screening up to date: ' + Rationale + '.'
 
 define "Rationale":
   Coalesce({

@@ -14,14 +14,14 @@ include ColorectalCancerElements called CCE
 NOTE: Introduced Measurement Period as the parameter here for demonstration purposes
 so it will run on the current implementations.
 */
-parameter "Measurement Period" Interval<DateTime>
-  default Interval[Now() - 1 year, Now()]
-
-parameter "Reference Date" DateTime 
+parameter "Reference Date" //DateTime 
   // default  @2024-01-01T00:00:00-10:00 // for testing within this project
   default Now() // for testing within a CQL Testing Framework project
 
 context Patient
+
+define "Measurement Period": //<DateTime>
+  Interval[("Reference Date" - 1 year), "Reference Date"]
 
 define "Alive": 
   case 

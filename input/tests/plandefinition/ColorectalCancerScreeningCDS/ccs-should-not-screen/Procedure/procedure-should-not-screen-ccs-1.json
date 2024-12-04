@@ -1,6 +1,6 @@
 {
   "resourceType": "Procedure",
-  "id": "should-not-screen-ccs-1",
+  "id": "ccs-should-not-screen-proc",
   "meta": {
       "profile": [
         "http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure"

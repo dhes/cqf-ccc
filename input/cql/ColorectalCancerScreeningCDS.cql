@@ -8,24 +8,22 @@ include FHIRCommon version '4.0.1' called FC
 include ColorectalCancerElements called CCE
 
 parameter "Reference Date" //DateTime 
-  default  @2024-01-01T00:00:00-10:00 // for testing within this project
+  // default  @2024-01-01T00:00:00-10:00 // for testing within this project
+  default Date(2024,1,1) // for testing within this project
   // default Now() // for testing within a CQL Testing Framework project
 
 context Patient
 
-define "Alive": 
-  case 
-    when Patient.deceased = false then true
-    else false
-  end
-
-define Active: 
-  if Patient.active = true then true
-	else false
+define Eligible:
+  Patient.active = true
+  and (
+    Patient.deceased  is null
+    or Patient.deceased = false
+  )
 
 define "Is Recommendation Applicable":
-  Alive
-  and Active
+  // Alive
+  Eligible
   and not CCE."Has Appropriate Colorectal Cancer Screening"
   and not CCE."Has Active Malignant Neoplasm"
   and not exists (CCE."Total Colectomy Performed")
@@ -58,4 +56,4 @@ define "Get Card Indicator":
   else
     'routine'
 
-define TrueValue: true
+// define TrueValue: true

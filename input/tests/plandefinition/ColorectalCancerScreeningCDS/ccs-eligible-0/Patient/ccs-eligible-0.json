@@ -1,16 +1,16 @@
 {
   "resourceType": "Patient",
-  "id": "ccs-should-screen",
+  "id": "ccs-eligible-0",
   "identifier": [
     {
       "system": "http://example.org/colon-cancer-screening",
-      "value": "ccs-should-screen"
+      "value": "eligible-0"
     }
   ],
   "extension": [
     {
       "url": "http://example.org/fhir/StructureDefinition/patient-annotation",
-      "valueString": ""
+      "valueString": "active=true + deceasedBoolean=false => Eligible"
     }
   ],
   "name": [

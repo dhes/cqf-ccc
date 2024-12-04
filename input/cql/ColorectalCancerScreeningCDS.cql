@@ -15,13 +15,13 @@ NOTE: Introduced Measurement Period as the parameter here for demonstration purp
 so it will run on the current implementations.
 */
 parameter "Reference Date" //DateTime 
-  // default  @2024-01-01T00:00:00-10:00 // for testing within this project
-  default Now() // for testing within a CQL Testing Framework project
+  default  @2024-01-01T00:00:00-10:00 // for testing within this project
+  // default Now() // for testing within a CQL Testing Framework project
 
 context Patient
 
-define "Measurement Period": //<DateTime>
-  Interval[("Reference Date" - 1 year), "Reference Date"]
+// define "Measurement Period": //<DateTime>
+//   Interval[("Reference Date" - 1 year), "Reference Date"]
 
 define "Alive": 
   case 
@@ -38,7 +38,7 @@ define Active:
 define "Is Recommendation Applicable":
   Alive
   and Active
-  and AgeInYearsAt(start of "Measurement Period") between 50 and 75
+  // and AgeInYearsAt(start of "Measurement Period") between 50 and 75
   and not CCE."Has Appropriate Colorectal Cancer Screening"
   and not CCE."Has Active Malignant Neoplasm"
   and not exists (CCE."Total Colectomy Performed")
@@ -49,17 +49,17 @@ define "Get Card Summary":
   else
     'Colorectal cancer screening up to date'
 
-define "Get Card Detail":
-  if "Is Recommendation Applicable" then
-    'Patient meets the inclusion criteria for appropriate colorectal cancer screening, but has ' + Rationale + '.'
-  else
-    'Colorectal cancer screening up to date: ' + Rationale + '.'
+// define "Get Card Detail":
+//   if "Is Recommendation Applicable" then
+//     'Patient meets the inclusion criteria for appropriate colorectal cancer screening, but has ' + Rationale + '.'
+//   else
+//     'Colorectal cancer screening up to date: ' + Rationale + '.'
 
 define "Rationale":
   Coalesce({
-    'most recent FOBT issued on ' + ToString(date from CCE."Most Recent Fecal Occult Blood Test Result".issued),
-    'most recent FIT DNA issued on ' + ToString(date from CCE."Most Recent Fecal Immunochemical Test DNA Result".issued),
-    'most recent CT Colonography performed on ' + ToString(date from start of FC.ToInterval(CCE."Most Recent CT Colonography Performed".performed)),
+    // 'most recent FOBT issued on ' + ToString(date from CCE."Most Recent Fecal Occult Blood Test Result".issued),
+    // 'most recent FIT DNA issued on ' + ToString(date from CCE."Most Recent Fecal Immunochemical Test DNA Result".issued),
+    // 'most recent CT Colonography performed on ' + ToString(date from start of FC.ToInterval(CCE."Most Recent CT Colonography Performed".performed)),
     'most recent Flexible Sigmoidoscopy performed on ' + ToString(date from start of FC.ToInterval(CCE."Most Recent Flexible Sigmoidoscopy Performed".performed)),
     'most recent Colonoscopy performed on ' + ToString(date from start of FC.ToInterval(CCE."Most Recent Colonoscopy Performed".performed)),
     'no evidence of appropriate screening'
@@ -70,3 +70,5 @@ define "Get Card Indicator":
     'asap'
   else
     'routine'
+
+define TrueValue: true

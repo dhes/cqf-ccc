@@ -21,7 +21,7 @@ define function MostRecent(procedures List<Procedure>, asOf DateTime):
       sort by start of FC.ToInterval(performed)
   )
 
-define function MostRecent(observations List<Observation>, asOf DateTime):
+define function MostRecent(observations List<Observation>):
   First(
     observations O
       sort by issued
@@ -72,7 +72,7 @@ define "Fecal Occult Blood Test Result":
 			and FecalOccultResult.value is not null
 
 define "Most Recent Fecal Occult Blood Test Result":
-  MostRecent("Fecal Occult Blood Test Result", AsOf)
+  MostRecent("Fecal Occult Blood Test Result")
 
 define "Fecal Occult Blood Test Result Within 1 Year":
   "Fecal Occult Blood Test Result" R
@@ -84,7 +84,7 @@ define "Fecal Immunochemical Test DNA Result":
 			and FitDNA.value is not null
 
 define "Most Recent Fecal Immunochemical Test DNA Result":
-  MostRecent("Fecal Immunochemical Test DNA Result", AsOf)
+  MostRecent("Fecal Immunochemical Test DNA Result")
 
 define "Fecal Immunochemical Test DNA Result Within 3 Years":
   "Fecal Immunochemical Test DNA Result" R

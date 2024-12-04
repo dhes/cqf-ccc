@@ -1,6 +1,6 @@
 ## CdsCandidates.md
 
-These existing CDS projects are in progress and have an evidence base. Some are already part of the clinical quality framesork. They are good candidates for personal projects. 
+These existing CDS projects are in progress and have an evidence base. Some are already part of the clinical quality framework. They are good candidates for personal projects. 
 
 |name|Authority|link|link|
 |---|---|---|---|

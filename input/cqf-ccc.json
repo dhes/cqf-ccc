@@ -1,0 +1,146 @@
+{
+  "resourceType": "ImplementationGuide",
+  "id": "fhir.cqf.ccc",
+  "url": "http://fhir.org/guides/cqf/ccc/ImplementationGuide/fhir.cqf.ccc",
+  "version": "0.1.0",
+  "name": "CCC",
+  "title": "Colorectal Cancer Concepts",
+  "status": "draft",
+  "experimental": true,
+  "publisher": "Clinical Quality Framework",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://github.com/cqframework"
+        }
+      ]
+    }
+  ],
+  "description": "An example content implementation guide that illustrates a CPG-on-FHIR approach to knowledge engineering applied to Colorectal Cancer.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001"
+        }
+      ]
+    }
+  ],
+  "packageId": "fhir.cqf.ccc",
+  "license": "CC0-1.0",
+  "fhirVersion": [
+    "4.0.1"
+  ],
+  "dependsOn": [
+    {
+      "id": "cpg",
+      "uri": "http://hl7.org/fhir/uv/cpg/ImplementationGuide/hl7.fhir.uv.cpg",
+      "packageId": "hl7.fhir.uv.cpg",
+      "version": "1.0.0"
+    },
+    {
+      "id": "cqf",
+      "uri": "http://fhir.org/guides/cqf/common/ImplementationGuide/fhir.cqf.common",
+      "packageId": "fhir.cqf.common",
+      "version": "4.0.1"
+    },
+    {
+      "id": "measures",
+      "uri": "http://hl7.org/fhir/us/cqfmeasures/ImplementationGuide/hl7.fhir.us.cqfmeasures",
+      "packageId": "hl7.fhir.us.cqfmeasures",
+      "version": "3.0.0"
+    }
+  ],
+  "definition": {
+    "resource": [
+      {
+        "reference": {
+          "reference": "Device/cqf-tooling"
+        },
+        "display": "CQF Tooling Device",
+        "name": "CQFToolingDevice",
+        "description": "A Device that represents a CQF Tooling version.",
+        "exampleBoolean": false
+      }
+    ],
+    "page": {
+      "nameUrl": "toc.html",
+      "title": "Table of Contents",
+      "generation": "html",
+      "page": [
+        {
+          "nameUrl": "index.html",
+          "title": "Colorectal Cancer Concepts Home Page",
+          "generation": "html"
+        },
+        {
+          "nameUrl": "background1.html",
+          "title": "Background Page 1",
+          "generation": "html"
+        },
+        {
+          "nameUrl": "background2.html",
+          "title": "Background Page 2",
+          "generation": "html"
+        },
+        {
+          "nameUrl": "spec.html",
+          "title": "Specification",
+          "generation": "html"
+        },
+        {
+          "nameUrl": "downloads.html",
+          "title": "Useful Downloads",
+          "generation": "html"
+        },
+        {
+          "nameUrl": "license.html",
+          "title": "License",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "changes.html",
+          "title": "IG Change History",
+          "generation": "html"
+        }
+      ]
+    },
+    "parameter": [
+      {
+        "code": "copyrightyear",
+        "value": "2019+"
+      },
+      {
+        "code": "releaselabel",
+        "value": "CI Build"
+      },
+      {
+        "code": "find-other-resources",
+        "value": "true"
+      },
+      {
+        "code": "path-resource",
+        "value": "input/resources/library"
+      },
+      {
+        "code": "path-resource",
+        "value": "input/resources/measure"
+      },
+      {
+        "code": "path-resource",
+        "value": "input/resources/plandefinition"
+      },
+      {
+        "code": "path-liquid",
+        "value": "templates/liquid"
+      },
+      {
+        "code": "path-suppressed-warnings",
+        "value": "input/ignoreWarnings.txt"
+      }
+    ]
+  }
+}

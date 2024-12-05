@@ -10,7 +10,7 @@
   "extension": [
     {
       "url": "http://example.org/fhir/StructureDefinition/patient-annotation",
-      "valueString": "active = true && deceased = false => Eligible "
+      "valueString": "Eligible? active = true && deceased = false => true "
     }
   ],
   "name": [
@@ -21,6 +21,6 @@
   ],
   "birthDate": "1968-01-01",
   "gender": "male",
-  "active": false,
+  "active": true,
   "deceasedBoolean": false
 }

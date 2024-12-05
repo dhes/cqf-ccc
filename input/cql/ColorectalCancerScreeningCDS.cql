@@ -14,10 +14,13 @@ parameter "Reference Date" //DateTime
 
 context Patient
 
+define A:
+  (singleton from (Patient.extension E where E.url='http://example.org/fhir/StructureDefinition/patient-annotation')).value.value
+
 define Eligible:
   Patient.active = true
   and (
-    Patient.deceased  is null
+    Patient.deceased is null
     or Patient.deceased = false
   )
 

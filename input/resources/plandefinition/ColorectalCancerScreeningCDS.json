@@ -64,23 +64,23 @@
           "kind": "applicability",
           "expression": {
             "language": "text/cql-identifier",
-            "expression": "Is Recommendation Applicable"
+            "expression": "Applicable"
           }
         }
       ],
       "dynamicValue": [
         {
-          "path": "action.description",
-          "expression": {
-            "language": "text/cql-identifier",
-            "expression": "Get Card Detail"
-          }
-        },
-        {
           "path": "action.title",
           "expression": {
             "language": "text/cql-identifier",
             "expression": "Get Card Summary"
+          }
+        },
+        {
+          "path": "action.description",
+          "expression": {
+            "language": "text/cql-identifier",
+            "expression": "Get Card Detail"
           }
         },
         {

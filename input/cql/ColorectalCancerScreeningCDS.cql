@@ -23,6 +23,12 @@ define `1-patient-annotation`:
 // define "5-PatientDeceasedIsDateTime": Patient.deceased is dateTime
 // define "6-PatientDeceasedValue": Patient.deceased
 
+// handy colonoscopy troubleshooting definitions
+define `2-date from (date from CCE.ReferenceDate - 10 years)`:
+  date from (date from CCE.ReferenceDate - 10 years)
+define "3-ColonoscopyPerformedWithin10Years":
+	exists CCE."Colonoscopy Performed Within 10 Years"
+
 define ActiveAndAlive:
   Patient.active = true
     and (
@@ -32,16 +38,10 @@ define ActiveAndAlive:
 
 define PatientAge: AgeInYearsAt(CCE.ReferenceDate)
 
-// handy colonoscopy troubleshooting definitions
-define `2-date from (date from CCE.ReferenceDate - 10 years)`:
-  date from (date from CCE.ReferenceDate - 10 years)
-define "3-ColonoscopyPerformedWithin10Years":
-	exists CCE."Colonoscopy Performed Within 10 Years"
-
 define "Applicable":
   ActiveAndAlive
     and PatientAge in Interval[50,75]
-    and not CCE."Has Appropriate Colorectal Cancer Screening"
+    and not CCE.TestUpToDate
     and not CCE."Has Active Malignant Neoplasm"
     and not exists ( CCE."Total Colectomy Performed" )
 
@@ -64,6 +64,5 @@ define "Rationale":
   )
 
 define "Get Card Indicator":
-  if "Applicable" then 'asap' 
-    else 'routine'
+  'routine'
 

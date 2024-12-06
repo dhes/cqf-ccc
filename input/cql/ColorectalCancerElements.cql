@@ -132,7 +132,7 @@ define "Colonoscopy Performed Within 10 Years":
       and date from P.performed <= date from ReferenceDate
       and date from P.performed >= date from (date from ReferenceDate - 10 years)
 
-define "Has Appropriate Colorectal Cancer Screening":
+define TestUpToDate:
   // exists "Fecal Occult Blood Test Result Within 1 Year"
     // exists "Fecal Immunochemical Test DNA Result Within 3 Years"
     exists "CT Colonography Performed Within 5 Years"

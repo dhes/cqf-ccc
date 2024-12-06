@@ -1,10 +1,10 @@
 {
   "resourceType": "Patient",
-  "id": "ccs-should-screen",
+  "id": "ccs-colonoscopy-1",
   "identifier": [
     {
       "system": "http://example.org/colon-cancer-screening",
-      "value": "ccs-should-screen"
+      "value": "colonoscopy-1"
     }
   ],
   "extension": [
@@ -19,7 +19,7 @@
       "given": ["Absolutely"]
     }
   ],
-  "birthDate": "1968-01-01",
+  "birthDate": "1964-01-01",
   "gender": "male",
   "active": true,
   "deceasedBoolean": false

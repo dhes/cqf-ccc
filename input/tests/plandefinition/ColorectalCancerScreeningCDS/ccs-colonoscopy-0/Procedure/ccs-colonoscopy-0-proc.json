@@ -1,0 +1,18 @@
+{
+  "resourceType": "Procedure",
+  "id": "ccs-colonoscopy-0-proc",
+  "status": "completed",
+  "code": {
+    "coding": [
+      {
+        "system": "http://www.ama-assn.org/go/cpt",
+        "code": "44392",
+        "display": "Colonoscopy through stoma; with removal of tumor(s), polyp(s), or other lesion(s) by hot biopsy forceps"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/ccs-colonoscopy-0"
+  },
+  "performedDateTime": "2013-12-30"
+}

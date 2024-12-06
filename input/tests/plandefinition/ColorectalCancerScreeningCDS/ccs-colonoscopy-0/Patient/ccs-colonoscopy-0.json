@@ -1,16 +1,16 @@
 {
   "resourceType": "Patient",
-  "id": "ccs-eligible-4",
+  "id": "ccs-colonoscopy-0",
   "identifier": [
     {
       "system": "http://example.org/colon-cancer-screening",
-      "value": "eligible-4"
+      "value": "colonoscopy-0"
     }
   ],
   "extension": [
     {
       "url": "http://example.org/fhir/StructureDefinition/patient-annotation",
-      "valueString": "Eligible? active = true && deceased = null => true"
+      "valueString": ""
     }
   ],
   "name": [
@@ -21,5 +21,6 @@
   ],
   "birthDate": "1964-01-01",
   "gender": "male",
-  "active": true
+  "active": true,
+  "deceasedBoolean": false
 }

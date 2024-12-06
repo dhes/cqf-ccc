@@ -4,16 +4,19 @@ using FHIR version '4.0.1'
 
 include FHIRHelpers version '4.0.1'
 include FHIRCommon version '4.0.1' called FC
-
 include ColorectalCancerConcepts called Cx
+
+parameter ReferenceDate //Date
+default Date(2024, 1, 1) // for testing using Execute CQL
+  // default Today() // for testing within a CQL Testing Framework project
 
 parameter "Measurement Period" Interval<DateTime>
   default Interval[Now() - 1 year, Now()]
 
 context Patient
 
-define AsOf:
-  end of "Measurement Period"
+define AsOf: ReferenceDate
+  // end of "Measurement Period"
 
 define function MostRecent(procedures List<Procedure>, asOf DateTime):
   First(
@@ -74,9 +77,9 @@ define "Fecal Occult Blood Test Result":
 define "Most Recent Fecal Occult Blood Test Result":
   MostRecent("Fecal Occult Blood Test Result")
 
-define "Fecal Occult Blood Test Result Within 1 Year":
-  "Fecal Occult Blood Test Result" R
-    where R.issued 1 year or less on or before AsOf
+// define "Fecal Occult Blood Test Result Within 1 Year":
+//   "Fecal Occult Blood Test Result" R
+//     where R.issued 1 year or less on or before AsOf
 
 define "Fecal Immunochemical Test DNA Result":
   [Observation: Cx."FIT DNA"] FitDNA
@@ -86,9 +89,9 @@ define "Fecal Immunochemical Test DNA Result":
 define "Most Recent Fecal Immunochemical Test DNA Result":
   MostRecent("Fecal Immunochemical Test DNA Result")
 
-define "Fecal Immunochemical Test DNA Result Within 3 Years":
-  "Fecal Immunochemical Test DNA Result" R
-    where R.issued 3 years or less on or before AsOf
+// define "Fecal Immunochemical Test DNA Result Within 3 Years":
+//   "Fecal Immunochemical Test DNA Result" R
+//     where R.issued 3 years or less on or before AsOf
 
 define "CT Colonography Performed":
   [Procedure: Cx."CT Colonography"] Colonography
@@ -124,9 +127,9 @@ define "Colonoscopy Performed Within 10 Years":
     where FC.ToInterval(P.performed) ends 10 years or less on or before AsOf
 
 define "Has Appropriate Colorectal Cancer Screening":
-  exists "Fecal Occult Blood Test Result Within 1 Year"
-    or exists "Fecal Immunochemical Test DNA Result Within 3 Years"
-    or exists "CT Colonography Performed Within 5 Years"
+  // exists "Fecal Occult Blood Test Result Within 1 Year"
+    // exists "Fecal Immunochemical Test DNA Result Within 3 Years"
+    exists "CT Colonography Performed Within 5 Years"
     or exists "Flexible Sigmoidoscopy Performed Within 5 Years"
     or exists "Colonoscopy Performed Within 10 Years"
 

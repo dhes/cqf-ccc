@@ -25,3 +25,6 @@ Thumbs.db
 /input-cache
 bundles/**
 gofsh/**
+
+# confidential files #
+.env

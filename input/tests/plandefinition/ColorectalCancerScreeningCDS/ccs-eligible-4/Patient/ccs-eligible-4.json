@@ -1,16 +1,16 @@
 {
   "resourceType": "Patient",
-  "id": "ccs-eligible-4",
+  "id": "ccs-active-and-alive-4",
   "identifier": [
     {
       "system": "http://example.org/colon-cancer-screening",
-      "value": "eligible-4"
+      "value": "active-and-alive-4"
     }
   ],
   "extension": [
     {
       "url": "http://example.org/fhir/StructureDefinition/patient-annotation",
-      "valueString": "Eligible? active = true && deceased = null => true"
+      "valueString": "ActiveAndAlive? active = true && deceased = null => true"
     }
   ],
   "name": [

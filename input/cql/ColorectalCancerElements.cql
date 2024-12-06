@@ -18,7 +18,7 @@ context Patient
 define AsOf: ReferenceDate
   // end of "Measurement Period"
 
-define function MostRecent(procedures List<Procedure>, asOf DateTime):
+define function MostRecent(procedures List<Procedure>, ReferenceDate DateTime):
   First(
     procedures P
       sort by start of FC.ToInterval(performed)
@@ -32,11 +32,11 @@ define function MostRecent(observations List<Observation>):
 
 define function IssuedWithin(observations List<Observation>, lookback System.Quantity):
   observations O
-    where O.issued on or after day of AsOf - lookback
+    where O.issued on or after day of ReferenceDate - lookback
 
 define function PerformedWithin(procedures List<Procedure>, lookback System.Quantity):
   procedures P
-    where end of FC.ToInterval(P.performed) on or after day of AsOf - lookback
+    where end of FC.ToInterval(P.performed) on or after day of ReferenceDate - lookback
 
 define "Total Colectomy Performed":
   [Procedure: Cx."Total Colectomy"] Colectomy
@@ -55,7 +55,7 @@ define "Total Colectomy from Patient History":
 define "Has History of Total Colectomy":
  exists (
     "Total Colectomy from Patient History" ColectomyHistory
-      where FC.ToPrevalenceInterval(ColectomyHistory) starts on or before AsOf
+      where FC.ToPrevalenceInterval(ColectomyHistory) starts on or before ReferenceDate
   )
 
 define "Active Malignant Neoplasm":
@@ -66,7 +66,7 @@ define "Active Malignant Neoplasm":
 define "Has Active Malignant Neoplasm":
   exists (
     "Active Malignant Neoplasm" M
-      where FC.ToPrevalenceInterval(M) starts on or before AsOf
+      where FC.ToPrevalenceInterval(M) starts on or before ReferenceDate
   )
 
 define "Fecal Occult Blood Test Result":
@@ -79,7 +79,7 @@ define "Most Recent Fecal Occult Blood Test Result":
 
 // define "Fecal Occult Blood Test Result Within 1 Year":
 //   "Fecal Occult Blood Test Result" R
-//     where R.issued 1 year or less on or before AsOf
+//     where R.issued 1 year or less on or before ReferenceDate
 
 define "Fecal Immunochemical Test DNA Result":
   [Observation: Cx."FIT DNA"] FitDNA
@@ -91,40 +91,46 @@ define "Most Recent Fecal Immunochemical Test DNA Result":
 
 // define "Fecal Immunochemical Test DNA Result Within 3 Years":
 //   "Fecal Immunochemical Test DNA Result" R
-//     where R.issued 3 years or less on or before AsOf
+//     where R.issued 3 years or less on or before ReferenceDate
 
 define "CT Colonography Performed":
   [Procedure: Cx."CT Colonography"] Colonography
     where Colonography.status = 'completed'
 
 define "Most Recent CT Colonography Performed":
-  MostRecent("CT Colonography Performed", AsOf)
+  MostRecent("CT Colonography Performed", ReferenceDate)
 
 define "CT Colonography Performed Within 5 Years":
   "CT Colonography Performed" P
-    where FC.ToInterval(P.performed) ends 5 years or less on or before AsOf
+    where FC.ToInterval(P.performed) ends 5 years or less on or before ReferenceDate
 
 define "Flexible Sigmoidoscopy Performed":
   [Procedure: Cx."Flexible Sigmoidoscopy"] FlexibleSigmoidoscopy
 		where FlexibleSigmoidoscopy.status = 'completed'
 
 define "Most Recent Flexible Sigmoidoscopy Performed":
-  MostRecent("Flexible Sigmoidoscopy Performed", AsOf)
+  MostRecent("Flexible Sigmoidoscopy Performed", ReferenceDate)
 
 define "Flexible Sigmoidoscopy Performed Within 5 Years":
   "Flexible Sigmoidoscopy Performed" P
-    where FC.ToInterval(P.performed) ends 5 years or less on or before AsOf
+    where FC.ToInterval(P.performed) ends 5 years or less on or before ReferenceDate
 
 define "Colonoscopy Performed":
   [Procedure: Cx."Colonoscopy"] Colonoscopy
 		where Colonoscopy.status = 'completed'
 
 define "Most Recent Colonoscopy Performed":
-  MostRecent("Colonoscopy Performed", AsOf)
+  MostRecent("Colonoscopy Performed", ReferenceDate)
+
+// define "Colonoscopy Performed Within 10 Years":
+//   "Colonoscopy Performed" P
+//     where FC.ToInterval(P.performed) ends 10 years or less on or before ReferenceDate
 
 define "Colonoscopy Performed Within 10 Years":
   "Colonoscopy Performed" P
-    where FC.ToInterval(P.performed) ends 10 years or less on or before AsOf
+    where date from P.performed is not null
+      and date from P.performed <= date from ReferenceDate
+      and date from P.performed >= date from (date from ReferenceDate - 10 years)
 
 define "Has Appropriate Colorectal Cancer Screening":
   // exists "Fecal Occult Blood Test Result Within 1 Year"
@@ -146,8 +152,8 @@ define "Colonoscopy from Patient History":
 define "Has History of Appropriate Colorectal Cancer Screening":
   exists (
     "Flexible Sigmoidoscopy from Patient History" FlexSigCondition
-      where FC.ToPrevalenceInterval(FlexSigCondition) starts on or after day of AsOf - 5 years)
+      where FC.ToPrevalenceInterval(FlexSigCondition) starts on or after day of ReferenceDate - 5 years)
   or exists (
     "Colonoscopy from Patient History" ColonscopyCondition
-      where FC.ToPrevalenceInterval(ColonscopyCondition) starts on or after day of AsOf - 10 years)
+      where FC.ToPrevalenceInterval(ColonscopyCondition) starts on or after day of ReferenceDate - 10 years)
 

@@ -10,18 +10,18 @@ include ColorectalCancerElements called CCE
 
 context Patient
 
-define A:
+define `1-patient-annotation`:
   ( singleton from ( Patient.extension E
         where E.url = 'http://example.org/fhir/StructureDefinition/patient-annotation'
     )
   ).value.value
 
-// Handy troubleshooting definitions
-// define "PatientDeceasedIsNull": Patient.deceased is null
-// define "PatientDeceasedIsBoolean": Patient.deceased is Boolean
-// define "PatientDeceasedIsFalse": Patient.deceased = false
-// define "PatientDeceasedIsDateTime": Patient.deceased is dateTime
-// define "PatientDeceasedValue": Patient.deceased
+// Handy Active and Alive deceased troubleshooting definitions
+// define "2-PatientDeceasedIsNull": Patient.deceased is null
+// define "3-PatientDeceasedIsBoolean": Patient.deceased is Boolean
+// define "4-PatientDeceasedIsFalse": Patient.deceased = false
+// define "5-PatientDeceasedIsDateTime": Patient.deceased is dateTime
+// define "6-PatientDeceasedValue": Patient.deceased
 
 define ActiveAndAlive:
   Patient.active = true
@@ -32,7 +32,13 @@ define ActiveAndAlive:
 
 define PatientAge: AgeInYearsAt(CCE.ReferenceDate)
 
-define "Is Recommendation Applicable":
+// handy colonoscopy troubleshooting definitions
+define `2-date from (date from CCE.ReferenceDate - 10 years)`:
+  date from (date from CCE.ReferenceDate - 10 years)
+define "3-ColonoscopyPerformedWithin10Years":
+	exists CCE."Colonoscopy Performed Within 10 Years"
+
+define "Applicable":
   ActiveAndAlive
     and PatientAge in Interval[50,75]
     and not CCE."Has Appropriate Colorectal Cancer Screening"
@@ -40,11 +46,11 @@ define "Is Recommendation Applicable":
     and not exists ( CCE."Total Colectomy Performed" )
 
 define "Get Card Summary":
-  if "Is Recommendation Applicable" then 'Recommend colorectal cancer screening' 
+  if "Applicable" then 'Recommend colorectal cancer screening' 
     else 'Colorectal cancer screening up to date'
 
 define "Get Card Detail":
-  if "Is Recommendation Applicable" then 'Patient meets the inclusion criteria for appropriate colorectal cancer screening, but has ' + Rationale + '.' 
+  if "Applicable" then 'Patient meets the inclusion criteria for appropriate colorectal cancer screening, but has ' + Rationale + '.' 
     else 'Colorectal cancer screening up to date: ' + Rationale + '.'
 
 define "Rationale":
@@ -58,6 +64,6 @@ define "Rationale":
   )
 
 define "Get Card Indicator":
-  if "Is Recommendation Applicable" then 'asap' 
+  if "Applicable" then 'asap' 
     else 'routine'
 

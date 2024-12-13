@@ -1,0 +1,43 @@
+{
+    "_id": "c28a7adf-96a0-4919-baee-d6adba42d602",
+    "colName": "test",
+    "created": "2024-12-06T23:05:10.476Z",
+    "sortNum": 20000,
+    "folders": [],
+    "requests": [
+        {
+            "_id": "669327f0-c01b-4753-a4ae-181dbc4b7979",
+            "colId": "c28a7adf-96a0-4919-baee-d6adba42d602",
+            "containerId": "",
+            "name": "Patient",
+            "url": "Patient/ccs-colonoscopy-0/$everything?_count=1000",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-12-06T23:05:28.756Z",
+            "modified": "2024-12-08T02:53:11.881Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "_count",
+                    "value": "1000",
+                    "isPath": false
+                }
+            ]
+        }
+    ],
+    "settings": {
+        "headers": [
+            {
+                "name": "Content-Type",
+                "value": "application/fhir+json"
+            },
+            {
+                "name": "Authorization",
+                "value": "Basic {{HAPI_FHIR_AUTH}}"
+            }
+        ],
+        "options": {
+            "baseUrl": "{{FHIR_SERVER_URL}}"
+        }
+    }
+}

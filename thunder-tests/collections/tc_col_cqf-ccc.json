@@ -114,5 +114,20 @@
                 ]
             }
         }
-    ]
+    ],
+    "settings": {
+        "headers": [
+            {
+                "name": "Content-Type",
+                "value": "application/fhir+json"
+            },
+            {
+                "name": "Authorization",
+                "value": "Basic {{HAPI_FHIR_AUTH}}"
+            }
+        ],
+        "options": {
+            "baseUrl": "{{FHIR_SERVER_URL}}"
+        }
+    }
 }

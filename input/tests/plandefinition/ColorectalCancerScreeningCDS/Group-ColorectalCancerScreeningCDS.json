@@ -1,0 +1,67 @@
+{
+  "resourceType": "Group",
+  "id": "ColorectalCancerScreeningCDS",
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/artifact-testArtifact",
+    "valueCanonical": "http://ecqi.healthit.gov/ecqms/Measure/ColorectalCancerScreeningCDS"
+  } ],
+  "active": true,
+  "type": "person",
+  "actual": true,
+  "member": [ {
+    "entity": {
+      "reference": "Patient/ccs-gender-0",
+      "display": "Absolutely Nobody"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/ccs-colonoscopy-0",
+      "display": "Absolutely Nobody"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/ccs-colonoscopy-1",
+      "display": "Absolutely Nobody"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/ccs-active-and-alive-0",
+      "display": "Absolutely Nobody"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/ccs-active-and-alive-7",
+      "display": "Absolutely Nobody"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/ccs-active-and-alive-6",
+      "display": "Absolutely Nobody"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/ccs-active-and-alive-1",
+      "display": "Absolutely Nobody"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/ccs-active-and-alive-4",
+      "display": "Absolutely Nobody"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/ccs-active-and-alive-3",
+      "display": "Absolutely Nobody"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/ccs-active-and-alive-2",
+      "display": "Absolutely Nobody"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/ccs-active-and-alive-5",
+      "display": "Absolutely Nobody"
+    }
+  } ]
+}

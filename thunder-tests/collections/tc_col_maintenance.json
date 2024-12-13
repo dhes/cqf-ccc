@@ -1,0 +1,42 @@
+{
+    "_id": "dcdac4f9-b14f-41aa-968e-2d338e27341f",
+    "colName": "maintenance",
+    "created": "2024-12-06T23:08:53.709Z",
+    "sortNum": 30000,
+    "folders": [],
+    "settings": {
+        "headers": [
+            {
+                "name": "Content-Type",
+                "value": "application/fhir+json"
+            },
+            {
+                "name": "Authorization",
+                "value": "Basic {{HAPI_FHIR_AUTH}}"
+            }
+        ],
+        "options": {
+            "baseUrl": "{{FHIR_SERVER_URL}}"
+        }
+    },
+    "requests": [
+        {
+            "_id": "30778864-1357-43e2-a1db-7f304c840ebc",
+            "colId": "dcdac4f9-b14f-41aa-968e-2d338e27341f",
+            "containerId": "",
+            "name": "update everything",
+            "url": "",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-12-06T23:08:53.712Z",
+            "modified": "2024-12-06T23:11:53.289Z",
+            "headers": [],
+            "body": {
+                "type": "binary",
+                "raw": "",
+                "form": [],
+                "binary": "../bundles/plandefinition/ColorectalCancerScreeningCDS/ColorectalCancerScreeningCDS-bundle.json"
+            }
+        }
+    ]
+}

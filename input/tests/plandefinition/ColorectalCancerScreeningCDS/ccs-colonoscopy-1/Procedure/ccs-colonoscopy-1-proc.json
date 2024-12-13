@@ -3,16 +3,25 @@
   "id": "ccs-colonoscopy-1-proc",
   "status": "completed",
   "code": {
-      "coding": [
-          {
-              "system": "http://www.ama-assn.org/go/cpt",
-              "code": "44388",
-              "display": "Colonoscopy through stoma; with ablation of tumor(s), polyp(s), or other lesion(s) not amenable to removal by hot biopsy forceps, bipolar cautery or snare technique"
-          }
-      ]
+    "coding": [
+      {
+        "system": "http://www.ama-assn.org/go/cpt",
+        "code": "44388",
+        "display": "Colonoscopy through stoma; with ablation of tumor(s), polyp(s), or other lesion(s) not amenable to removal by hot biopsy forceps, bipolar cautery or snare technique"
+      }
+    ],
+    "text": "Colonoscopy through stoma"
   },
   "subject": {
-      "reference": "Patient/ccs-colonoscopy-1"
+    "reference": "Patient/ccs-colonoscopy-1"
   },
+  "performer": [
+    {
+      "actor": {
+        "reference": "Practitioner/grahek-lawrence",
+        "display": "Larry Grahek"
+      }
+    }
+  ],
   "performedDateTime": "2014-01-01"
 }

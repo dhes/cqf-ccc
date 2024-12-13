@@ -9,10 +9,19 @@
         "code": "44392",
         "display": "Colonoscopy through stoma; with removal of tumor(s), polyp(s), or other lesion(s) by hot biopsy forceps"
       }
-    ]
+    ],
+    "text": "Colonoscopy through stoma"
   },
   "subject": {
     "reference": "Patient/ccs-colonoscopy-0"
   },
+  "performer": [
+    {
+      "actor": {
+        "reference": "Practitioner/grahek-lawrence",
+        "display": "Larry Grahek"
+      }
+    }
+  ],
   "performedDateTime": "2013-12-30"
 }

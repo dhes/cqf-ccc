@@ -6,19 +6,22 @@ include FHIRHelpers version '4.0.1'
 include FHIRCommon version '4.0.1' called FC
 include ColorectalCancerConcepts called Cx
 
-parameter ReferenceDate //Date
-default Date(2024, 1, 1) // for testing using Execute CQL
-  // default Today() // for testing within a CQL Testing Framework project
+parameter "Reference dateTime" DateTime//Date
+// default Date(2024, 1, 1) // for testing using Execute CQL
+  default Today() // for testing within a CQL Testing Framework project
 
-parameter "Measurement Period" Interval<DateTime>
-  default Interval[Now() - 1 year, Now()]
+// parameter "Measurement Period" Interval<DateTime>
+//   default Interval[Now() - 1 year, Now()]
 
 context Patient
+
+define ReferenceDate:
+  date from "Reference dateTime"
 
 define AsOf: ReferenceDate
   // end of "Measurement Period"
 
-define function MostRecent(procedures List<Procedure>, ReferenceDate DateTime):
+define function MostRecent(procedures List<Procedure>, ReferenceDate):
   First(
     procedures P
       sort by start of FC.ToInterval(performed)

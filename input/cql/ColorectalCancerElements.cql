@@ -6,7 +6,7 @@ include FHIRHelpers version '4.0.1'
 include FHIRCommon version '4.0.1' called FC
 include ColorectalCancerConcepts called Cx
 
-parameter "Reference dateTime" DateTime//Date
+parameter "Reference dateTime" DateTime //Date
 // default Date(2024, 1, 1) // for testing using Execute CQL
   default Today() // for testing within a CQL Testing Framework project
 
@@ -18,19 +18,20 @@ context Patient
 define ReferenceDate:
   date from "Reference dateTime"
 
-define AsOf: ReferenceDate
-  // end of "Measurement Period"
+// not in use
+// define AsOf: ReferenceDate
+//   // end of "Measurement Period"
 
-define function MostRecent(procedures List<Procedure>, ReferenceDate):
-  First(
+define function MostRecentProcedure(procedures List<Procedure>):
+  Last(
     procedures P
-      sort by start of FC.ToInterval(performed)
+      sort by date from performed asc
   )
 
-define function MostRecent(observations List<Observation>):
-  First(
+define function MostRecentObservation(observations List<Observation>):
+  Last(
     observations O
-      sort by issued
+      sort by issued asc
   )
 
 define function IssuedWithin(observations List<Observation>, lookback System.Quantity):
@@ -78,7 +79,7 @@ define "Fecal Occult Blood Test Result":
 			and FecalOccultResult.value is not null
 
 define "Most Recent Fecal Occult Blood Test Result":
-  MostRecent("Fecal Occult Blood Test Result")
+  MostRecentObservation("Fecal Occult Blood Test Result")
 
 // define "Fecal Occult Blood Test Result Within 1 Year":
 //   "Fecal Occult Blood Test Result" R
@@ -90,7 +91,7 @@ define "Fecal Immunochemical Test DNA Result":
 			and FitDNA.value is not null
 
 define "Most Recent Fecal Immunochemical Test DNA Result":
-  MostRecent("Fecal Immunochemical Test DNA Result")
+  MostRecentObservation("Fecal Immunochemical Test DNA Result")
 
 // define "Fecal Immunochemical Test DNA Result Within 3 Years":
 //   "Fecal Immunochemical Test DNA Result" R
@@ -101,7 +102,7 @@ define "CT Colonography Performed":
     where Colonography.status = 'completed'
 
 define "Most Recent CT Colonography Performed":
-  MostRecent("CT Colonography Performed", ReferenceDate)
+  MostRecentProcedure("CT Colonography Performed")
 
 define "CT Colonography Performed Within 5 Years":
   "CT Colonography Performed" P
@@ -112,7 +113,7 @@ define "Flexible Sigmoidoscopy Performed":
 		where FlexibleSigmoidoscopy.status = 'completed'
 
 define "Most Recent Flexible Sigmoidoscopy Performed":
-  MostRecent("Flexible Sigmoidoscopy Performed", ReferenceDate)
+  MostRecentProcedure("Flexible Sigmoidoscopy Performed")
 
 define "Flexible Sigmoidoscopy Performed Within 5 Years":
   "Flexible Sigmoidoscopy Performed" P
@@ -123,7 +124,7 @@ define "Colonoscopy Performed":
 		where Colonoscopy.status = 'completed'
 
 define "Most Recent Colonoscopy Performed":
-  MostRecent("Colonoscopy Performed", ReferenceDate)
+  MostRecentProcedure("Colonoscopy Performed")
 
 // define "Colonoscopy Performed Within 10 Years":
 //   "Colonoscopy Performed" P
@@ -157,6 +158,6 @@ define "Has History of Appropriate Colorectal Cancer Screening":
     "Flexible Sigmoidoscopy from Patient History" FlexSigCondition
       where FC.ToPrevalenceInterval(FlexSigCondition) starts on or after day of ReferenceDate - 5 years)
   or exists (
-    "Colonoscopy from Patient History" ColonscopyCondition
-      where FC.ToPrevalenceInterval(ColonscopyCondition) starts on or after day of ReferenceDate - 10 years)
+    "Colonoscopy from Patient History" ColonoscopyCondition
+      where FC.ToPrevalenceInterval(ColonoscopyCondition) starts on or after day of ReferenceDate - 10 years)
 

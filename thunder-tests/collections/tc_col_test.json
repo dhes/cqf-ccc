@@ -9,12 +9,12 @@
             "_id": "669327f0-c01b-4753-a4ae-181dbc4b7979",
             "colId": "c28a7adf-96a0-4919-baee-d6adba42d602",
             "containerId": "",
-            "name": "Patient",
+            "name": "colonoscopy-0 exists",
             "url": "Patient/ccs-colonoscopy-0/$everything?_count=1000",
             "method": "GET",
             "sortNum": 10000,
             "created": "2024-12-06T23:05:28.756Z",
-            "modified": "2024-12-08T02:53:11.881Z",
+            "modified": "2024-12-18T21:10:04.007Z",
             "headers": [],
             "params": [
                 {
@@ -22,7 +22,39 @@
                     "value": "1000",
                     "isPath": false
                 }
+            ],
+            "tests": [
+                {
+                    "type": "res-code",
+                    "custom": "",
+                    "action": "equal",
+                    "value": "200"
+                }
             ]
+        },
+        {
+            "_id": "8bec4883-df5c-40a7-b0b4-9bc76eac3fe1",
+            "colId": "c28a7adf-96a0-4919-baee-d6adba42d602",
+            "containerId": "",
+            "name": "$apply colonoscopy-0",
+            "url": "PlanDefinition/ColorectalCancerScreeningCDS/$apply?subject=Patient/ccs-colonoscopy-0",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-12-18T21:11:16.018Z",
+            "modified": "2024-12-18T21:12:25.254Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "subject",
+                    "value": "Patient/ccs-colonoscopy-0",
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"subject\",\n      \"valueString\": \"Patient/ccs-colonoscopy-0\"\n    },\n    {\n      \"name\": \"parameters\",\n      \"resource\": {\n        \"resourceType\": \"Parameters\",\n        \"parameter\": [\n          {\n            \"name\": \"Reference dateTime\",\n            \"valueDateTime\": \"2024-01-01\"\n          }\n        ]\n      }\n    }\n  ]\n}\n",
+                "form": []
+            }
         }
     ],
     "settings": {

@@ -4,7 +4,7 @@
   "name": "ColorectalCancerScreeningCDS",
   "title": "Colorectal Cancer Screening CDS",
   "description": "The U.S. Preventive Services Task Force (2016) recommends screening for colorectal cancer starting at age 50 years and continuing until age 75 years. ",
-  "status": "draft",
+  "status": "active",
   "experimental": true,
   "date": "2019-05-15",
   "meta": {

@@ -1,6 +1,6 @@
 {
     "_id": "eb273112-06b6-4a51-b54f-6227f3ec1706",
-    "colName": "cqf-ccc",
+    "colName": "misc",
     "created": "2024-03-24T20:12:27.846Z",
     "sortNum": 10000,
     "folders": [],
@@ -113,6 +113,18 @@
                     }
                 ]
             }
+        },
+        {
+            "_id": "9509cc2d-1632-4193-82a2-36f262df2b6e",
+            "colId": "eb273112-06b6-4a51-b54f-6227f3ec1706",
+            "containerId": "",
+            "name": "get CCS PlanDefinition",
+            "url": "PlanDefinition",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-12-18T21:17:07.262Z",
+            "modified": "2024-12-18T21:25:56.093Z",
+            "headers": []
         }
     ],
     "settings": {

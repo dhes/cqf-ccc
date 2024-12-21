@@ -1,130 +1,28 @@
 {
-    "_id": "eb273112-06b6-4a51-b54f-6227f3ec1706",
+    "_id": "8c071589-ca42-4598-8f58-3dc08ceaf269",
     "colName": "misc",
-    "created": "2024-03-24T20:12:27.846Z",
-    "sortNum": 10000,
+    "created": "2024-12-21T00:10:15.863Z",
+    "sortNum": 40000,
     "folders": [],
     "requests": [
         {
-            "_id": "c9325209-33fb-468e-b5a7-a9a887819c9d",
-            "colId": "eb273112-06b6-4a51-b54f-6227f3ec1706",
+            "_id": "3d928e5e-12da-4834-ba16-9e9d7c2af677",
+            "colId": "8c071589-ca42-4598-8f58-3dc08ceaf269",
             "containerId": "",
-            "name": "POST PlanDefinition Bundle Copy",
-            "url": "http://localhost:8080/fhir",
-            "method": "POST",
-            "sortNum": 10000,
-            "created": "2024-03-24T20:12:27.850Z",
-            "modified": "2024-03-24T20:12:27.850Z",
-            "headers": [
-                {
-                    "name": "Content-Type",
-                    "value": "application/json"
-                }
-            ],
-            "params": [],
-            "body": {
-                "type": "binary",
-                "raw": "",
-                "form": [],
-                "binary": "../bundles/plandefinition/ColorectalCancerScreeningCDS/ColorectalCancerScreeningCDS-bundle.json"
-            },
-            "tests": []
-        },
-        {
-            "_id": "8bb76180-d22c-4d45-bf14-a55a300cc31e",
-            "colId": "eb273112-06b6-4a51-b54f-6227f3ec1706",
-            "containerId": "",
-            "name": "test should-screen",
-            "url": "http://localhost:8080/fhir/PlanDefinition/ColorectalCancerScreeningCDS/$apply",
-            "method": "POST",
-            "sortNum": 20000,
-            "created": "2024-03-24T20:12:27.851Z",
-            "modified": "2024-03-24T20:12:27.851Z",
-            "headers": [
-                {
-                    "name": "Content-Type",
-                    "value": "application/fhir+json"
-                }
-            ],
-            "params": [],
-            "body": {
-                "type": "json",
-                "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"subject\",\n      \"valueString\": \"Patient/ccs-should-screen\"\n    },\n    {\n      \"name\": \"parameters\",\n      \"resource\": {\n        \"resourceType\": \"Parameters\",\n        \"parameter\": [\n          {\n            \"name\": \"Reference dateTime\",\n            \"valueDateTime\": \"2024-01-01\"\n          }\n        ]\n      }\n    }\n  ]\n}\n",
-                "form": []
-            },
-            "tests": [
-                {
-                    "type": "res-code",
-                    "custom": "",
-                    "action": "equal",
-                    "value": "200"
-                }
-            ],
-            "postReq": {
-                "inlineScripts": [
-                    {
-                        "script": [
-                            "// let success = tc.response.status == 200;",
-                            "// tc.test(\"Response code is 200\", success);",
-                            "let success = tc.response.json.contained && tc.response.json.contained[0] && tc.response.json.contained[0].action !== null;",
-                            "tc.test(\"Action element is not null\", success);"
-                        ]
-                    }
-                ]
-            }
-        },
-        {
-            "_id": "6cf00e32-e604-4116-8dff-9fbe5b84c03e",
-            "colId": "eb273112-06b6-4a51-b54f-6227f3ec1706",
-            "containerId": "",
-            "name": "test should-not-screen",
-            "url": "http://localhost:8080/fhir/PlanDefinition/ColorectalCancerScreeningCDS/$apply",
-            "method": "POST",
-            "sortNum": 30000,
-            "created": "2024-03-24T20:12:27.852Z",
-            "modified": "2024-03-24T20:12:27.852Z",
-            "headers": [
-                {
-                    "name": "Content-Type",
-                    "value": "application/fhir+json"
-                }
-            ],
-            "params": [],
-            "body": {
-                "type": "json",
-                "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"subject\",\n      \"valueString\": \"Patient/ccs-should-not-screen\"\n    },\n    {\n      \"name\": \"parameters\",\n      \"resource\": {\n        \"resourceType\": \"Parameters\",\n        \"parameter\": [\n          {\n            \"name\": \"Reference dateTime\",\n            \"valueDateTime\": \"2024-01-01\"\n          }\n        ]\n      }\n    }\n  ]\n}\n",
-                "form": []
-            },
-            "tests": [
-                {
-                    "type": "res-code",
-                    "custom": "",
-                    "action": "equal",
-                    "value": "200"
-                }
-            ],
-            "postReq": {
-                "inlineScripts": [
-                    {
-                        "script": [
-                            "let success = tc.response.json.contained && tc.response.json.contained[0] && tc.response.json.contained[0].action == null;",
-                            "tc.test(\"Action element is null\", success);"
-                        ]
-                    }
-                ]
-            }
-        },
-        {
-            "_id": "9509cc2d-1632-4193-82a2-36f262df2b6e",
-            "colId": "eb273112-06b6-4a51-b54f-6227f3ec1706",
-            "containerId": "",
-            "name": "get CCS PlanDefinition",
-            "url": "PlanDefinition",
+            "name": "list entire test population",
+            "url": "Patient?identifier=http://example.org/colon-cancer-screening|",
             "method": "GET",
-            "sortNum": 40000,
-            "created": "2024-12-18T21:17:07.262Z",
-            "modified": "2024-12-18T21:25:56.093Z",
-            "headers": []
+            "sortNum": 10000,
+            "created": "2024-12-21T00:11:10.965Z",
+            "modified": "2024-12-21T00:15:39.283Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "identifier",
+                    "value": "http://example.org/colon-cancer-screening|",
+                    "isPath": false
+                }
+            ]
         }
     ],
     "settings": {

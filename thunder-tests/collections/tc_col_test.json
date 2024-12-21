@@ -9,20 +9,13 @@
             "_id": "669327f0-c01b-4753-a4ae-181dbc4b7979",
             "colId": "c28a7adf-96a0-4919-baee-d6adba42d602",
             "containerId": "",
-            "name": "colonoscopy-0 exists",
-            "url": "Patient/ccs-colonoscopy-0/$everything?_count=1000",
+            "name": "exists colonoscopy-0",
+            "url": "Patient/ccs-colonoscopy-0/$everything",
             "method": "GET",
             "sortNum": 10000,
             "created": "2024-12-06T23:05:28.756Z",
-            "modified": "2024-12-18T21:10:04.007Z",
+            "modified": "2024-12-21T00:03:48.422Z",
             "headers": [],
-            "params": [
-                {
-                    "name": "_count",
-                    "value": "1000",
-                    "isPath": false
-                }
-            ],
             "tests": [
                 {
                     "type": "res-code",
@@ -36,24 +29,596 @@
             "_id": "8bec4883-df5c-40a7-b0b4-9bc76eac3fe1",
             "colId": "c28a7adf-96a0-4919-baee-d6adba42d602",
             "containerId": "",
-            "name": "$apply colonoscopy-0",
-            "url": "PlanDefinition/ColorectalCancerScreeningCDS/$apply?subject=Patient/ccs-colonoscopy-0",
+            "name": "test colonoscopy-0",
+            "url": "PlanDefinition/ColorectalCancerScreeningCDS/$apply",
             "method": "POST",
-            "sortNum": 20000,
+            "sortNum": 12500,
             "created": "2024-12-18T21:11:16.018Z",
-            "modified": "2024-12-18T21:12:25.254Z",
+            "modified": "2024-12-21T00:44:47.821Z",
             "headers": [],
-            "params": [
-                {
-                    "name": "subject",
-                    "value": "Patient/ccs-colonoscopy-0",
-                    "isPath": false
-                }
-            ],
             "body": {
                 "type": "json",
                 "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"subject\",\n      \"valueString\": \"Patient/ccs-colonoscopy-0\"\n    },\n    {\n      \"name\": \"parameters\",\n      \"resource\": {\n        \"resourceType\": \"Parameters\",\n        \"parameter\": [\n          {\n            \"name\": \"Reference dateTime\",\n            \"valueDateTime\": \"2024-01-01\"\n          }\n        ]\n      }\n    }\n  ]\n}\n",
                 "form": []
+            },
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "// positive test case",
+                            "let containsOperationOutcome = tc.response.json.contained &&",
+                            "                               tc.response.json.contained.some(item => item.resourceType === \"OperationOutcome\");",
+                            "",
+                            "let requestGroupWithAction = tc.response.json.contained &&",
+                            "                             tc.response.json.contained.find(item => ",
+                            "                                 item.resourceType === \"RequestGroup\" && item.action);",
+                            "",
+                            "let success = !containsOperationOutcome && !!requestGroupWithAction;",
+                            "",
+                            "tc.test(\"No OperationOutcome. RequestGroup.action is present\", success);"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "e55cba8e-1214-4a1c-aee4-74d450fba641",
+            "colId": "c28a7adf-96a0-4919-baee-d6adba42d602",
+            "containerId": "",
+            "name": "exists colonoscopy-1",
+            "url": "Patient/ccs-colonoscopy-1/$everything",
+            "method": "GET",
+            "sortNum": 13750,
+            "created": "2024-12-20T23:57:43.796Z",
+            "modified": "2024-12-21T00:03:56.135Z",
+            "headers": [],
+            "tests": [
+                {
+                    "type": "res-code",
+                    "custom": "",
+                    "action": "equal",
+                    "value": "200"
+                }
+            ]
+        },
+        {
+            "_id": "7e898026-6188-4904-9f11-e117cd013f70",
+            "colId": "c28a7adf-96a0-4919-baee-d6adba42d602",
+            "containerId": "",
+            "name": "test colonoscopy-1",
+            "url": "PlanDefinition/ColorectalCancerScreeningCDS/$apply",
+            "method": "POST",
+            "sortNum": 15000,
+            "created": "2024-12-20T23:57:46.340Z",
+            "modified": "2024-12-21T00:45:37.780Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"subject\",\n      \"valueString\": \"Patient/ccs-colonoscopy-1\"\n    },\n    {\n      \"name\": \"parameters\",\n      \"resource\": {\n        \"resourceType\": \"Parameters\",\n        \"parameter\": [\n          {\n            \"name\": \"Reference dateTime\",\n            \"valueDateTime\": \"2024-01-01\"\n          }\n        ]\n      }\n    }\n  ]\n}\n",
+                "form": []
+            },
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "// negative test case",
+                            "let containsOperationOutcome = tc.response.json.contained &&",
+                            "                               tc.response.json.contained.some(item => item.resourceType === \"OperationOutcome\");",
+                            "",
+                            "let requestGroupWithAction = tc.response.json.contained &&",
+                            "                             tc.response.json.contained.find(item => ",
+                            "                                 item.resourceType === \"RequestGroup\" && item.action);",
+                            "",
+                            "let success = !containsOperationOutcome && !requestGroupWithAction;",
+                            "",
+                            "tc.test(\"No OperationOutcome and no RequestGroup with action attribute present\", success);"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "7941026b-89d4-41ef-b441-f9523a09f4af",
+            "colId": "c28a7adf-96a0-4919-baee-d6adba42d602",
+            "containerId": "",
+            "name": "exists active-and-alive-0",
+            "url": "Patient/ccs-active-and-alive-0/$everything",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-12-20T23:59:08.159Z",
+            "modified": "2024-12-21T00:06:07.270Z",
+            "headers": [],
+            "tests": [
+                {
+                    "type": "res-code",
+                    "custom": "",
+                    "action": "equal",
+                    "value": "200"
+                }
+            ]
+        },
+        {
+            "_id": "011219e8-6fbf-4ecf-8d90-c74c5345fe76",
+            "colId": "c28a7adf-96a0-4919-baee-d6adba42d602",
+            "containerId": "",
+            "name": "test  active-and-alive-0",
+            "url": "PlanDefinition/ColorectalCancerScreeningCDS/$apply",
+            "method": "POST",
+            "sortNum": 25000,
+            "created": "2024-12-20T23:59:12.806Z",
+            "modified": "2024-12-21T00:50:09.363Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"subject\",\n      \"valueString\": \"Patient/ccs-active-and-alive-0\"\n    },\n    {\n      \"name\": \"parameters\",\n      \"resource\": {\n        \"resourceType\": \"Parameters\",\n        \"parameter\": [\n          {\n            \"name\": \"Reference dateTime\",\n            \"valueDateTime\": \"2024-01-01\"\n          }\n        ]\n      }\n    }\n  ]\n}\n",
+                "form": []
+            },
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "// negative test case",
+                            "let containsOperationOutcome = tc.response.json.contained &&",
+                            "                               tc.response.json.contained.some(item => item.resourceType === \"OperationOutcome\");",
+                            "",
+                            "let requestGroupWithAction = tc.response.json.contained &&",
+                            "                             tc.response.json.contained.find(item => ",
+                            "                                 item.resourceType === \"RequestGroup\" && item.action);",
+                            "",
+                            "let success = !containsOperationOutcome && !requestGroupWithAction;",
+                            "",
+                            "tc.test(\"No OperationOutcome and no RequestGroup with action attribute present\", success);"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "d811573e-1a95-48cc-916b-08ed2991cd6a",
+            "colId": "c28a7adf-96a0-4919-baee-d6adba42d602",
+            "containerId": "",
+            "name": "exists active-and-alive-1",
+            "url": "Patient/ccs-active-and-alive-1/$everything",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-12-21T00:00:38.729Z",
+            "modified": "2024-12-21T00:04:09.927Z",
+            "headers": [],
+            "tests": [
+                {
+                    "type": "res-code",
+                    "custom": "",
+                    "action": "equal",
+                    "value": "200"
+                }
+            ]
+        },
+        {
+            "_id": "92291878-9e61-4e47-892e-e96d942dba9f",
+            "colId": "c28a7adf-96a0-4919-baee-d6adba42d602",
+            "containerId": "",
+            "name": "exists active-and-alive-2",
+            "url": "Patient/ccs-active-and-alive-2/$everything",
+            "method": "GET",
+            "sortNum": 32519.5,
+            "created": "2024-12-21T00:00:46.133Z",
+            "modified": "2024-12-21T00:04:12.744Z",
+            "headers": [],
+            "tests": [
+                {
+                    "type": "res-code",
+                    "custom": "",
+                    "action": "equal",
+                    "value": "200"
+                }
+            ]
+        },
+        {
+            "_id": "945cdc4f-0116-41d4-b7bb-fbd03f0d5d2f",
+            "colId": "c28a7adf-96a0-4919-baee-d6adba42d602",
+            "containerId": "",
+            "name": "exists active-and-alive-3",
+            "url": "Patient/ccs-active-and-alive-3/$everything",
+            "method": "GET",
+            "sortNum": 28798.9,
+            "created": "2024-12-21T00:00:56.950Z",
+            "modified": "2024-12-21T00:04:16.016Z",
+            "headers": [],
+            "tests": [
+                {
+                    "type": "res-code",
+                    "custom": "",
+                    "action": "equal",
+                    "value": "200"
+                }
+            ]
+        },
+        {
+            "_id": "1f90a577-dc9c-4a92-be3a-3b468bdef961",
+            "colId": "c28a7adf-96a0-4919-baee-d6adba42d602",
+            "containerId": "",
+            "name": "exists active-and-alive-4",
+            "url": "Patient/ccs-active-and-alive-4/$everything",
+            "method": "GET",
+            "sortNum": 26938.6,
+            "created": "2024-12-21T00:01:00.863Z",
+            "modified": "2024-12-21T00:04:20.279Z",
+            "headers": [],
+            "tests": [
+                {
+                    "type": "res-code",
+                    "custom": "",
+                    "action": "equal",
+                    "value": "200"
+                }
+            ]
+        },
+        {
+            "_id": "ad8a5579-407f-48a7-98ef-9964ff76374a",
+            "colId": "c28a7adf-96a0-4919-baee-d6adba42d602",
+            "containerId": "",
+            "name": "exists active-and-alive-5",
+            "url": "Patient/ccs-active-and-alive-5/$everything",
+            "method": "GET",
+            "sortNum": 26008.4,
+            "created": "2024-12-21T00:01:03.883Z",
+            "modified": "2024-12-21T00:04:24.027Z",
+            "headers": [],
+            "tests": [
+                {
+                    "type": "res-code",
+                    "custom": "",
+                    "action": "equal",
+                    "value": "200"
+                }
+            ]
+        },
+        {
+            "_id": "50ec577a-228d-4cda-adad-e874e872c0bf",
+            "colId": "c28a7adf-96a0-4919-baee-d6adba42d602",
+            "containerId": "",
+            "name": "exists active-and-alive-6",
+            "url": "Patient/ccs-active-and-alive-6/$everything",
+            "method": "GET",
+            "sortNum": 25543.3,
+            "created": "2024-12-21T00:01:11.150Z",
+            "modified": "2024-12-21T00:04:30.021Z",
+            "headers": [],
+            "tests": [
+                {
+                    "type": "res-code",
+                    "custom": "",
+                    "action": "equal",
+                    "value": "200"
+                }
+            ]
+        },
+        {
+            "_id": "2e28b507-2d49-4224-a225-dce16fb0d207",
+            "colId": "c28a7adf-96a0-4919-baee-d6adba42d602",
+            "containerId": "",
+            "name": "exists active-and-alive-7",
+            "url": "Patient/ccs-active-and-alive-7/$everything",
+            "method": "GET",
+            "sortNum": 25310.8,
+            "created": "2024-12-21T00:01:14.211Z",
+            "modified": "2024-12-21T00:04:34.168Z",
+            "headers": [],
+            "tests": [
+                {
+                    "type": "res-code",
+                    "custom": "",
+                    "action": "equal",
+                    "value": "200"
+                }
+            ]
+        },
+        {
+            "_id": "e428aab3-9e2d-48ba-9ab0-623678093bc9",
+            "colId": "c28a7adf-96a0-4919-baee-d6adba42d602",
+            "containerId": "",
+            "name": "test  active-and-alive-1",
+            "url": "PlanDefinition/ColorectalCancerScreeningCDS/$apply",
+            "method": "POST",
+            "sortNum": 35000,
+            "created": "2024-12-21T00:32:57.951Z",
+            "modified": "2024-12-21T00:50:14.347Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"subject\",\n      \"valueString\": \"Patient/ccs-active-and-alive-1\"\n    },\n    {\n      \"name\": \"parameters\",\n      \"resource\": {\n        \"resourceType\": \"Parameters\",\n        \"parameter\": [\n          {\n            \"name\": \"Reference dateTime\",\n            \"valueDateTime\": \"2024-01-01\"\n          }\n        ]\n      }\n    }\n  ]\n}\n",
+                "form": []
+            },
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "// negative test case",
+                            "let containsOperationOutcome = tc.response.json.contained &&",
+                            "                               tc.response.json.contained.some(item => item.resourceType === \"OperationOutcome\");",
+                            "",
+                            "let requestGroupWithAction = tc.response.json.contained &&",
+                            "                             tc.response.json.contained.find(item => ",
+                            "                                 item.resourceType === \"RequestGroup\" && item.action);",
+                            "",
+                            "let success = !containsOperationOutcome && !requestGroupWithAction;",
+                            "",
+                            "tc.test(\"No OperationOutcome and no RequestGroup with action attribute present\", success);"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "39c4b9f7-ccdd-46cc-9db5-7bcc817fdada",
+            "colId": "c28a7adf-96a0-4919-baee-d6adba42d602",
+            "containerId": "",
+            "name": "test  active-and-alive-2",
+            "url": "PlanDefinition/ColorectalCancerScreeningCDS/$apply",
+            "method": "POST",
+            "sortNum": 30039.1,
+            "created": "2024-12-21T00:33:00.320Z",
+            "modified": "2024-12-21T00:50:19.549Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"subject\",\n      \"valueString\": \"Patient/ccs-active-and-alive-2\"\n    },\n    {\n      \"name\": \"parameters\",\n      \"resource\": {\n        \"resourceType\": \"Parameters\",\n        \"parameter\": [\n          {\n            \"name\": \"Reference dateTime\",\n            \"valueDateTime\": \"2024-01-01\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+                "form": []
+            },
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "// negative test case",
+                            "let containsOperationOutcome = tc.response.json.contained &&",
+                            "                               tc.response.json.contained.some(item => item.resourceType === \"OperationOutcome\");",
+                            "",
+                            "let requestGroupWithAction = tc.response.json.contained &&",
+                            "                             tc.response.json.contained.find(item => ",
+                            "                                 item.resourceType === \"RequestGroup\" && item.action);",
+                            "",
+                            "let success = !containsOperationOutcome && !requestGroupWithAction;",
+                            "",
+                            "tc.test(\"No OperationOutcome and no RequestGroup with action attribute present\", success);"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "3d53cb56-3816-41ba-9351-96e1320de981",
+            "colId": "c28a7adf-96a0-4919-baee-d6adba42d602",
+            "containerId": "",
+            "name": "test  active-and-alive-3",
+            "url": "PlanDefinition/ColorectalCancerScreeningCDS/$apply",
+            "method": "POST",
+            "sortNum": 27558.7,
+            "created": "2024-12-21T00:33:03.641Z",
+            "modified": "2024-12-21T00:50:25.259Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"subject\",\n      \"valueString\": \"Patient/ccs-active-and-alive-3\"\n    },\n    {\n      \"name\": \"parameters\",\n      \"resource\": {\n        \"resourceType\": \"Parameters\",\n        \"parameter\": [\n          {\n            \"name\": \"Reference dateTime\",\n            \"valueDateTime\": \"2024-01-01\"\n          }\n        ]\n      }\n    }\n  ]\n}\n",
+                "form": []
+            },
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "// negative test case",
+                            "let containsOperationOutcome = tc.response.json.contained &&",
+                            "                               tc.response.json.contained.some(item => item.resourceType === \"OperationOutcome\");",
+                            "",
+                            "let requestGroupWithAction = tc.response.json.contained &&",
+                            "                             tc.response.json.contained.find(item => ",
+                            "                                 item.resourceType === \"RequestGroup\" && item.action);",
+                            "",
+                            "let success = !containsOperationOutcome && !requestGroupWithAction;",
+                            "",
+                            "tc.test(\"No OperationOutcome and no RequestGroup with action attribute present\", success);"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "ad520d75-a675-4534-9f1c-224c8cc08c41",
+            "colId": "c28a7adf-96a0-4919-baee-d6adba42d602",
+            "containerId": "",
+            "name": "test  active-and-alive-4",
+            "url": "PlanDefinition/ColorectalCancerScreeningCDS/$apply",
+            "method": "POST",
+            "sortNum": 26318.5,
+            "created": "2024-12-21T00:33:06.105Z",
+            "modified": "2024-12-21T00:47:13.983Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"subject\",\n      \"valueString\": \"Patient/ccs-active-and-alive-4\"\n    },\n    {\n      \"name\": \"parameters\",\n      \"resource\": {\n        \"resourceType\": \"Parameters\",\n        \"parameter\": [\n          {\n            \"name\": \"Reference dateTime\",\n            \"valueDateTime\": \"2024-01-01\"\n          }\n        ]\n      }\n    }\n  ]\n}\n",
+                "form": []
+            },
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "// positive test case",
+                            "let containsOperationOutcome = tc.response.json.contained &&",
+                            "                               tc.response.json.contained.some(item => item.resourceType === \"OperationOutcome\");",
+                            "",
+                            "let requestGroupWithAction = tc.response.json.contained &&",
+                            "                             tc.response.json.contained.find(item => ",
+                            "                                 item.resourceType === \"RequestGroup\" && item.action);",
+                            "",
+                            "let success = !containsOperationOutcome && !!requestGroupWithAction;",
+                            "",
+                            "tc.test(\"No OperationOutcome. RequestGroup.action is present\", success);"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "1515dacd-20b5-4e7c-be48-cdf0dcde2caf",
+            "colId": "c28a7adf-96a0-4919-baee-d6adba42d602",
+            "containerId": "",
+            "name": "test  active-and-alive-5",
+            "url": "PlanDefinition/ColorectalCancerScreeningCDS/$apply",
+            "method": "POST",
+            "sortNum": 25698.3,
+            "created": "2024-12-21T00:33:08.508Z",
+            "modified": "2024-12-21T00:47:33.933Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"subject\",\n      \"valueString\": \"Patient/ccs-active-and-alive-5\"\n    },\n    {\n      \"name\": \"parameters\",\n      \"resource\": {\n        \"resourceType\": \"Parameters\",\n        \"parameter\": [\n          {\n            \"name\": \"Reference dateTime\",\n            \"valueDateTime\": \"2024-01-01\"\n          }\n        ]\n      }\n    }\n  ]\n}\n",
+                "form": []
+            },
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "// positive test case",
+                            "let containsOperationOutcome = tc.response.json.contained &&",
+                            "                               tc.response.json.contained.some(item => item.resourceType === \"OperationOutcome\");",
+                            "",
+                            "let requestGroupWithAction = tc.response.json.contained &&",
+                            "                             tc.response.json.contained.find(item => ",
+                            "                                 item.resourceType === \"RequestGroup\" && item.action);",
+                            "",
+                            "let success = !containsOperationOutcome && !!requestGroupWithAction;",
+                            "",
+                            "tc.test(\"No OperationOutcome. RequestGroup.action is present\", success);"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "773bbfd6-f93c-411a-9f5e-1f2d4cbd584a",
+            "colId": "c28a7adf-96a0-4919-baee-d6adba42d602",
+            "containerId": "",
+            "name": "test  active-and-alive-6",
+            "url": "PlanDefinition/ColorectalCancerScreeningCDS/$apply",
+            "method": "POST",
+            "sortNum": 25388.3,
+            "created": "2024-12-21T00:33:11.983Z",
+            "modified": "2024-12-21T00:38:03.329Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"subject\",\n      \"valueString\": \"Patient/ccs-cactive-and-alive-6\"\n    },\n    {\n      \"name\": \"parameters\",\n      \"resource\": {\n        \"resourceType\": \"Parameters\",\n        \"parameter\": [\n          {\n            \"name\": \"Reference dateTime\",\n            \"valueDateTime\": \"2024-01-01\"\n          }\n        ]\n      }\n    }\n  ]\n}\n",
+                "form": []
+            }
+        },
+        {
+            "_id": "97f88d62-1921-4a2c-822b-383d4bb4b894",
+            "colId": "c28a7adf-96a0-4919-baee-d6adba42d602",
+            "containerId": "",
+            "name": "test  active-and-alive-7",
+            "url": "PlanDefinition/ColorectalCancerScreeningCDS/$apply",
+            "method": "POST",
+            "sortNum": 25233.3,
+            "created": "2024-12-21T00:33:14.400Z",
+            "modified": "2024-12-21T00:51:18.099Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"subject\",\n      \"valueString\": \"Patient/ccs-active-and-alive-7\"\n    },\n    {\n      \"name\": \"parameters\",\n      \"resource\": {\n        \"resourceType\": \"Parameters\",\n        \"parameter\": [\n          {\n            \"name\": \"Reference dateTime\",\n            \"valueDateTime\": \"2024-01-01\"\n          }\n        ]\n      }\n    }\n  ]\n}\n",
+                "form": []
+            },
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "// negative test case",
+                            "let containsOperationOutcome = tc.response.json.contained &&",
+                            "                               tc.response.json.contained.some(item => item.resourceType === \"OperationOutcome\");",
+                            "",
+                            "let requestGroupWithAction = tc.response.json.contained &&",
+                            "                             tc.response.json.contained.find(item => ",
+                            "                                 item.resourceType === \"RequestGroup\" && item.action);",
+                            "",
+                            "let success = !containsOperationOutcome && !requestGroupWithAction;",
+                            "",
+                            "tc.test(\"No OperationOutcome and no RequestGroup with action attribute present\", success);"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "03cb7ab8-1513-4998-891e-0e87eb80e19c",
+            "colId": "c28a7adf-96a0-4919-baee-d6adba42d602",
+            "containerId": "",
+            "name": "exists gender-0",
+            "url": "Patient/ccs-gender-0/$everything",
+            "method": "GET",
+            "sortNum": 30233.3,
+            "created": "2024-12-21T00:40:44.740Z",
+            "modified": "2024-12-21T00:48:38.858Z",
+            "headers": [],
+            "tests": [
+                {
+                    "type": "res-code",
+                    "custom": "",
+                    "action": "equal",
+                    "value": "200"
+                }
+            ],
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "// positive test case",
+                            "let containsOperationOutcome = tc.response.json.contained &&",
+                            "                               tc.response.json.contained.some(item => item.resourceType === \"OperationOutcome\");",
+                            "",
+                            "let requestGroupWithAction = tc.response.json.contained &&",
+                            "                             tc.response.json.contained.find(item => ",
+                            "                                 item.resourceType === \"RequestGroup\" && item.action);",
+                            "",
+                            "let success = !containsOperationOutcome && !!requestGroupWithAction;",
+                            "",
+                            "tc.test(\"No OperationOutcome. RequestGroup.action is present\", success);"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "06d84955-4b8f-4e4d-a517-545360787840",
+            "colId": "c28a7adf-96a0-4919-baee-d6adba42d602",
+            "containerId": "",
+            "name": "test  gender-0",
+            "url": "PlanDefinition/ColorectalCancerScreeningCDS/$apply",
+            "method": "POST",
+            "sortNum": 35233.3,
+            "created": "2024-12-21T00:40:47.483Z",
+            "modified": "2024-12-21T00:48:50.437Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"subject\",\n      \"valueString\": \"Patient/ccs-gender-0\"\n    },\n    {\n      \"name\": \"parameters\",\n      \"resource\": {\n        \"resourceType\": \"Parameters\",\n        \"parameter\": [\n          {\n            \"name\": \"Reference dateTime\",\n            \"valueDateTime\": \"2024-01-01\"\n          }\n        ]\n      }\n    }\n  ]\n}\n",
+                "form": []
+            },
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "// positive test case",
+                            "let containsOperationOutcome = tc.response.json.contained &&",
+                            "                               tc.response.json.contained.some(item => item.resourceType === \"OperationOutcome\");",
+                            "",
+                            "let requestGroupWithAction = tc.response.json.contained &&",
+                            "                             tc.response.json.contained.find(item => ",
+                            "                                 item.resourceType === \"RequestGroup\" && item.action);",
+                            "",
+                            "let success = !containsOperationOutcome && !!requestGroupWithAction;",
+                            "",
+                            "tc.test(\"No OperationOutcome. RequestGroup.action is present\", success);"
+                        ]
+                    }
+                ]
             }
         }
     ],

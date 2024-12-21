@@ -10,7 +10,7 @@
   "extension": [
     {
       "url": "http://example.org/fhir/StructureDefinition/patient-annotation",
-      "valueString": "colonoscopy date 10 years ago to the day => TestUpToDate = true"
+      "valueString": "colonoscopy date 10 years ago to the day => Due for test = false"
     }
   ],
   "name": [

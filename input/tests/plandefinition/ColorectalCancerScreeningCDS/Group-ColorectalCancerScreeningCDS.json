@@ -10,6 +10,16 @@
   "actual": true,
   "member": [ {
     "entity": {
+      "reference": "Patient/ccs-active-and-alive-1",
+      "display": "Absolutely Nobody"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/ccs-active-and-alive-6",
+      "display": "Absolutely Nobody"
+    }
+  }, {
+    "entity": {
       "reference": "Patient/ccs-gender-0",
       "display": "Absolutely Nobody"
     }
@@ -20,7 +30,7 @@
     }
   }, {
     "entity": {
-      "reference": "Patient/ccs-colonoscopy-1",
+      "reference": "Patient/ccs-active-and-alive-7",
       "display": "Absolutely Nobody"
     }
   }, {
@@ -30,27 +40,12 @@
     }
   }, {
     "entity": {
-      "reference": "Patient/ccs-active-and-alive-7",
+      "reference": "Patient/ccs-colonoscopy-1",
       "display": "Absolutely Nobody"
     }
   }, {
     "entity": {
-      "reference": "Patient/ccs-active-and-alive-6",
-      "display": "Absolutely Nobody"
-    }
-  }, {
-    "entity": {
-      "reference": "Patient/ccs-active-and-alive-1",
-      "display": "Absolutely Nobody"
-    }
-  }, {
-    "entity": {
-      "reference": "Patient/ccs-active-and-alive-4",
-      "display": "Absolutely Nobody"
-    }
-  }, {
-    "entity": {
-      "reference": "Patient/ccs-active-and-alive-3",
+      "reference": "Patient/ccs-active-and-alive-5",
       "display": "Absolutely Nobody"
     }
   }, {
@@ -60,7 +55,12 @@
     }
   }, {
     "entity": {
-      "reference": "Patient/ccs-active-and-alive-5",
+      "reference": "Patient/ccs-active-and-alive-3",
+      "display": "Absolutely Nobody"
+    }
+  }, {
+    "entity": {
+      "reference": "Patient/ccs-active-and-alive-4",
       "display": "Absolutely Nobody"
     }
   } ]

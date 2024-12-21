@@ -502,12 +502,31 @@
             "method": "POST",
             "sortNum": 25388.3,
             "created": "2024-12-21T00:33:11.983Z",
-            "modified": "2024-12-21T00:38:03.329Z",
+            "modified": "2024-12-21T01:35:56.981Z",
             "headers": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"subject\",\n      \"valueString\": \"Patient/ccs-cactive-and-alive-6\"\n    },\n    {\n      \"name\": \"parameters\",\n      \"resource\": {\n        \"resourceType\": \"Parameters\",\n        \"parameter\": [\n          {\n            \"name\": \"Reference dateTime\",\n            \"valueDateTime\": \"2024-01-01\"\n          }\n        ]\n      }\n    }\n  ]\n}\n",
+                "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"subject\",\n      \"valueString\": \"Patient/ccs-active-and-alive-6\"\n    },\n    {\n      \"name\": \"parameters\",\n      \"resource\": {\n        \"resourceType\": \"Parameters\",\n        \"parameter\": [\n          {\n            \"name\": \"Reference dateTime\",\n            \"valueDateTime\": \"2024-01-01\"\n          }\n        ]\n      }\n    }\n  ]\n}\n",
                 "form": []
+            },
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "// negative test case",
+                            "let containsOperationOutcome = tc.response.json.contained &&",
+                            "                               tc.response.json.contained.some(item => item.resourceType === \"OperationOutcome\");",
+                            "",
+                            "let requestGroupWithAction = tc.response.json.contained &&",
+                            "                             tc.response.json.contained.find(item => ",
+                            "                                 item.resourceType === \"RequestGroup\" && item.action);",
+                            "",
+                            "let success = !containsOperationOutcome && !requestGroupWithAction;",
+                            "",
+                            "tc.test(\"No OperationOutcome and no RequestGroup with action attribute present\", success);"
+                        ]
+                    }
+                ]
             }
         },
         {
@@ -555,7 +574,7 @@
             "method": "GET",
             "sortNum": 30233.3,
             "created": "2024-12-21T00:40:44.740Z",
-            "modified": "2024-12-21T00:48:38.858Z",
+            "modified": "2024-12-21T01:37:33.611Z",
             "headers": [],
             "tests": [
                 {
@@ -564,26 +583,7 @@
                     "action": "equal",
                     "value": "200"
                 }
-            ],
-            "postReq": {
-                "inlineScripts": [
-                    {
-                        "script": [
-                            "// positive test case",
-                            "let containsOperationOutcome = tc.response.json.contained &&",
-                            "                               tc.response.json.contained.some(item => item.resourceType === \"OperationOutcome\");",
-                            "",
-                            "let requestGroupWithAction = tc.response.json.contained &&",
-                            "                             tc.response.json.contained.find(item => ",
-                            "                                 item.resourceType === \"RequestGroup\" && item.action);",
-                            "",
-                            "let success = !containsOperationOutcome && !!requestGroupWithAction;",
-                            "",
-                            "tc.test(\"No OperationOutcome. RequestGroup.action is present\", success);"
-                        ]
-                    }
-                ]
-            }
+            ]
         },
         {
             "_id": "06d84955-4b8f-4e4d-a517-545360787840",

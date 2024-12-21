@@ -1,0 +1,26 @@
+{
+  "resourceType": "Patient",
+  "id": "ccs-deceased-date",
+  "identifier": [
+    {
+      "system": "http://example.org/colon-cancer-screening",
+      "value": "deceased-date"
+    }
+  ],
+  "extension": [
+    {
+      "url": "http://example.org/fhir/StructureDefinition/patient-annotation",
+      "valueString": "Dead by date => false"
+    }
+  ],
+  "name": [
+    {
+      "family": "Nobody",
+      "given": ["Absolutely"]
+    }
+  ],
+  "birthDate": "1964-01-01",
+  "gender": "male",
+  "active": true,
+  "deceasedDateTime": "2023-01-01"
+}

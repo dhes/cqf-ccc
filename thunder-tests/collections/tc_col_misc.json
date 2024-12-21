@@ -4,27 +4,7 @@
     "created": "2024-12-21T00:10:15.863Z",
     "sortNum": 40000,
     "folders": [],
-    "requests": [
-        {
-            "_id": "3d928e5e-12da-4834-ba16-9e9d7c2af677",
-            "colId": "8c071589-ca42-4598-8f58-3dc08ceaf269",
-            "containerId": "",
-            "name": "list entire test population",
-            "url": "Patient?identifier=http://example.org/colon-cancer-screening|",
-            "method": "GET",
-            "sortNum": 10000,
-            "created": "2024-12-21T00:11:10.965Z",
-            "modified": "2024-12-21T00:15:39.283Z",
-            "headers": [],
-            "params": [
-                {
-                    "name": "identifier",
-                    "value": "http://example.org/colon-cancer-screening|",
-                    "isPath": false
-                }
-            ]
-        }
-    ],
+    "requests": [],
     "settings": {
         "headers": [
             {

@@ -1,0 +1,25 @@
+{
+  "resourceType": "Patient",
+  "id": "ccs-deceased-null",
+  "identifier": [
+    {
+      "system": "http://example.org/colon-cancer-screening",
+      "value": "deceased-null"
+    }
+  ],
+  "extension": [
+    {
+      "url": "http://example.org/fhir/StructureDefinition/patient-annotation",
+      "valueString": "active a not expressly dead => true"
+    }
+  ],
+  "name": [
+    {
+      "family": "Nobody",
+      "given": ["Absolutely"]
+    }
+  ],
+  "birthDate": "1964-01-01",
+  "gender": "male",
+  "active": true
+}

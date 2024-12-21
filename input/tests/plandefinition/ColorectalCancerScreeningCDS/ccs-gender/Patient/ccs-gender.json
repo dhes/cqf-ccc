@@ -1,0 +1,26 @@
+{
+  "resourceType": "Patient",
+  "id": "ccs-gender",
+  "identifier": [
+    {
+      "system": "http://example.org/colon-cancer-screening",
+      "value": "gender"
+    }
+  ],
+  "extension": [
+    {
+      "url": "http://example.org/fhir/StructureDefinition/patient-annotation",
+      "valueString": "Complement to ccs-active-and-alive-4. Gender equality => true"
+    }
+  ],
+  "name": [
+    {
+      "family": "Nobody",
+      "given": ["Absolutely"]
+    }
+  ],
+  "birthDate": "1964-01-01",
+  "gender": "female",
+  "active": true,
+	"deceasedBoolean": false
+}

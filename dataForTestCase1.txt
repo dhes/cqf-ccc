@@ -1,0 +1,2 @@
+<id> <description> <expectedOutcome> <birthDate> <cptCode> <cptDisplay> <cptDescription> <maxInterval>
+"sigmoidoscopy-recent" "sigmoidoscopy well within 5 years" false "1964-01-01" "http://snomed.info/sct" "44441009" "Flexible fiberoptic sigmoidoscopy (procedure)" "Sigmoidoscopy" 5

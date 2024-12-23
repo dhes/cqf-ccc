@@ -1,0 +1,28 @@
+{
+  "resourceType": "Patient",
+  "id": "ccs-sigmoidoscopy-just-recent-enough",
+  "identifier": [
+    {
+      "system": "http://example.org/colon-cancer-screening",
+      "value": "sigmoidoscopy-just-recent-enough"
+    }
+  ],
+  "extension": [
+    {
+      "url": "http://example.org/fhir/StructureDefinition/patient-annotation",
+      "valueString": "sigmoidoscopy 5 years ago to the day => false"
+    }
+  ],
+  "name": [
+    {
+      "family": "Nobody",
+      "given": [
+        "Absolutely"
+      ]
+    }
+  ],
+  "birthDate": "1964-01-01",
+  "gender": "male",
+  "active": true,
+  "deceasedBoolean": false
+}

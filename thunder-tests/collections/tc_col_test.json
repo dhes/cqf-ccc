@@ -493,23 +493,23 @@
             "_id": "e7341c3c-f4b7-4aee-ad24-7d241daccb66",
             "colId": "c28a7adf-96a0-4919-baee-d6adba42d602",
             "containerId": "",
-            "name": "test colonoscopy-not-recent-enough Copy",
+            "name": "test colonoscopy-just-recent-enough",
             "url": "PlanDefinition/ColorectalCancerScreeningCDS/$apply",
             "method": "POST",
             "sortNum": 40233.3,
             "created": "2024-12-23T00:26:53.075Z",
-            "modified": "2024-12-23T00:27:46.988Z",
+            "modified": "2024-12-23T00:44:34.267Z",
             "headers": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"subject\",\n      \"valueString\": \"Patient/ccs-sigmoidoscopy-not-recent-enough\"\n    },\n    {\n      \"name\": \"parameters\",\n      \"resource\": {\n        \"resourceType\": \"Parameters\",\n        \"parameter\": [\n          {\n            \"name\": \"Reference dateTime\",\n            \"valueDateTime\": \"2024-01-01\"\n          }\n        ]\n      }\n    }\n  ]\n}\n",
+                "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"subject\",\n      \"valueString\": \"Patient/ccs-sigmoidoscopy-just-recent-enough\"\n    },\n    {\n      \"name\": \"parameters\",\n      \"resource\": {\n        \"resourceType\": \"Parameters\",\n        \"parameter\": [\n          {\n            \"name\": \"Reference dateTime\",\n            \"valueDateTime\": \"2024-01-01\"\n          }\n        ]\n      }\n    }\n  ]\n}\n",
                 "form": []
             },
             "postReq": {
                 "inlineScripts": [
                     {
                         "script": [
-                            "// positive test case",
+                            "// negative test case",
                             "let containsOperationOutcome = tc.response.json.contained &&",
                             "                               tc.response.json.contained.some(item => item.resourceType === \"OperationOutcome\");",
                             "",
@@ -517,9 +517,9 @@
                             "                             tc.response.json.contained.find(item => ",
                             "                                 item.resourceType === \"RequestGroup\" && item.action);",
                             "",
-                            "let success = !containsOperationOutcome && !!requestGroupWithAction;",
+                            "let success = !containsOperationOutcome && !requestGroupWithAction;",
                             "",
-                            "tc.test(\"No OperationOutcome. RequestGroup.action is present\", success);"
+                            "tc.test(\"No OperationOutcome and no RequestGroup with action attribute present\", success);"
                         ]
                     }
                 ]

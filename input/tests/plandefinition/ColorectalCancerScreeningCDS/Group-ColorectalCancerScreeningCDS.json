@@ -15,6 +15,11 @@
     }
   }, {
     "entity": {
+      "reference": "Patient/ccs-sigmoidoscopy-just-recent-enough",
+      "display": "Absolutely Nobody"
+    }
+  }, {
+    "entity": {
       "reference": "Patient/ccs-deceased-null",
       "display": "Absolutely Nobody"
     }

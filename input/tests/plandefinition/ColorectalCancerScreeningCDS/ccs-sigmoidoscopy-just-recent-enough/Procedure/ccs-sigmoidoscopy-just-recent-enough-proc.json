@@ -1,0 +1,27 @@
+{
+  "resourceType": "Procedure",
+  "id": "ccs-sigmoidoscopy-just-recent-enough-proc",
+  "status": "completed",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "44441009",
+        "display": "Flexible fiberoptic sigmoidoscopy (procedure)"
+      }
+    ],
+    "text": "Sigmoidoscopy"
+  },
+  "subject": {
+    "reference": "Patient/ccs-sigmoidoscopy-just-recent-enough"
+  },
+  "performer": [
+    {
+      "actor": {
+        "reference": "Practitioner/grahek-lawrence",
+        "display": "Larry Grahek"
+      }
+    }
+  ],
+  "performedDateTime": "2019-01-01"
+}

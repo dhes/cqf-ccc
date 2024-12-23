@@ -16,3 +16,25 @@ There are so many different ways to screen. For now we just have colonoscopy tes
 |Name|Resource|base?|aspect|action?|
 |---|---|---|---|---|
 |base|Patient|Y|-|true|
+
+# Troubleshooting
+
+note: MostRecent is only used in the rationale cql
+
+Sigmoidoscopy sequence: 
+- "Flexible Sigmoidoscopy Performed"
+- "Flexible Sigmoidoscopy Performed Within 5 Years"
+- TestUpToDate
+
+note: MostRecent is only used in the rationale cql
+
+Colonoscopy sequence: 
+- "Colonoscopy Performed"
+- "Most Recent Colonoscopy Performed"
+- "Colonoscopy Performed Within 10 Years"
+- TestUpToDate
+
+
+Change Sigmoidoscopy sequence to: 
+- "Flexible Sigmoidoscopy Performed"
+- "Most Recent Sigmoidoscopy Performed"

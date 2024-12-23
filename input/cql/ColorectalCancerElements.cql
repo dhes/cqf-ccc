@@ -7,8 +7,8 @@ include FHIRCommon version '4.0.1' called FC
 include ColorectalCancerConcepts called Cx
 
 parameter "Reference dateTime" DateTime //Date
-// default Date(2024, 1, 1) // for testing using Execute CQL
-  default Today() // for testing within a CQL Testing Framework project
+default Date(2024, 1, 1) // for testing using Execute CQL
+  // default Today() // for testing within a CQL Testing Framework project
 
 // parameter "Measurement Period" Interval<DateTime>
 //   default Interval[Now() - 1 year, Now()]
@@ -17,10 +17,6 @@ context Patient
 
 define ReferenceDate:
   date from "Reference dateTime"
-
-// not in use
-// define AsOf: ReferenceDate
-//   // end of "Measurement Period"
 
 define function MostRecentProcedure(procedures List<Procedure>):
   Last(
@@ -34,9 +30,9 @@ define function MostRecentObservation(observations List<Observation>):
       sort by issued asc
   )
 
-define function IssuedWithin(observations List<Observation>, lookback System.Quantity):
-  observations O
-    where O.issued on or after day of ReferenceDate - lookback
+// define function IssuedWithin(observations List<Observation>, lookback System.Quantity):
+//   observations O
+//     where O.issued on or after day of ReferenceDate - lookback
 
 define function PerformedWithin(procedures List<Procedure>, lookback System.Quantity):
   procedures P
@@ -75,8 +71,8 @@ define "Has Active Malignant Neoplasm":
 
 define "Fecal Occult Blood Test Result":
   [Observation: Cx."Fecal Occult Blood Test (FOBT)"] FecalOccultResult
-		where FecalOccultResult.status in {'final', 'amended', 'corrected', 'preliminary'}
-			and FecalOccultResult.value is not null
+    where FecalOccultResult.status in {'final', 'amended', 'corrected', 'preliminary'}
+      and FecalOccultResult.value is not null
 
 define "Most Recent Fecal Occult Blood Test Result":
   MostRecentObservation("Fecal Occult Blood Test Result")
@@ -87,8 +83,8 @@ define "Most Recent Fecal Occult Blood Test Result":
 
 define "Fecal Immunochemical Test DNA Result":
   [Observation: Cx."FIT DNA"] FitDNA
-		where FitDNA.status in {'final', 'amended', 'corrected', 'preliminary'}
-			and FitDNA.value is not null
+    where FitDNA.status in {'final', 'amended', 'corrected', 'preliminary'}
+      and FitDNA.value is not null
 
 define "Most Recent Fecal Immunochemical Test DNA Result":
   MostRecentObservation("Fecal Immunochemical Test DNA Result")
@@ -106,24 +102,34 @@ define "Most Recent CT Colonography Performed":
 
 define "CT Colonography Performed Within 5 Years":
   "CT Colonography Performed" P
-    where FC.ToInterval(P.performed) ends 5 years or less on or before ReferenceDate
+    // where FC.ToInterval(P.performed) ends 5 years or less on or before ReferenceDate
+    where date from P.performed is not null
+      and date from P.performed <= date from ReferenceDate
+      and date from P.performed >= date from (date from ReferenceDate - 5 years)
+
 
 define "Flexible Sigmoidoscopy Performed":
   [Procedure: Cx."Flexible Sigmoidoscopy"] FlexibleSigmoidoscopy
-		where FlexibleSigmoidoscopy.status = 'completed'
+    where FlexibleSigmoidoscopy.status = 'completed'
 
 define "Most Recent Flexible Sigmoidoscopy Performed":
   MostRecentProcedure("Flexible Sigmoidoscopy Performed")
 
 define "Flexible Sigmoidoscopy Performed Within 5 Years":
   "Flexible Sigmoidoscopy Performed" P
-    where FC.ToInterval(P.performed) ends 5 years or less on or before ReferenceDate
+    where date from P.performed is not null
+      and date from P.performed <= date from ReferenceDate
+      and date from P.performed >= date from (date from ReferenceDate - 5 years)
+
+// define "Flexible Sigmoidoscopy Performed Within 5 Years":
+//   "Flexible Sigmoidoscopy Performed" P
+//     where FC.ToInterval(P.performed) ends 5 years or less on or before ReferenceDate
 
 define "Colonoscopy Performed":
   [Procedure: Cx."Colonoscopy"] Colonoscopy
-		where Colonoscopy.status = 'completed'
+    where Colonoscopy.status = 'completed'
 
-define "Most Recent Colonoscopy Performed":
+define "Most Recent Colonoscopy Performed":  //orphaned
   MostRecentProcedure("Colonoscopy Performed")
 
 // define "Colonoscopy Performed Within 10 Years":

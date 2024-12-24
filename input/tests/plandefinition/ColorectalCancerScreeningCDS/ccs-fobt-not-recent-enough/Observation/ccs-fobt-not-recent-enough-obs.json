@@ -1,5 +1,5 @@
 {
-  "resourceType": "observaton",
+  "resourceType": "Observation",
   "id": "ccs-fobt-not-recent-enough-obs",
   "status": "final",
   "category": [

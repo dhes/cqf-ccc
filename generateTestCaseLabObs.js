@@ -39,7 +39,7 @@ function generateObservationResource(
   effectiveDate
 ) {
   return {
-    resourceType: "observaton",
+    resourceType: "Observation",
     id: `ccs-${id}-obs`,
     status: "final",
     category: [
@@ -133,7 +133,7 @@ async function main() {
 
   const baseDir = `input/tests/plandefinition/ColorectalCancerScreeningCDS/ccs-${id}`;
   saveResource(patient, `${baseDir}/Patient/ccs-${id}.json`);
-  saveResource(observation, `${baseDir}/Observaton/ccs-${id}-obs.json`);
+  saveResource(observation, `${baseDir}/Observation/ccs-${id}-obs.json`);
 
   console.log("Resources generated successfully.");
 }

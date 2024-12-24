@@ -1,6 +1,6 @@
 {
-  "resourceType": "observaton",
-  "id": "ccs-fit-not-recent-enough-obs",
+  "resourceType": "Observation",
+  "id": "ccs-fit-just-recent-enough-obs",
   "status": "final",
   "category": [
     {
@@ -23,12 +23,12 @@
     "text": "FIT DNA"
   },
   "subject": {
-    "reference": "Patient/ccs-fit-not-recent-enough"
+    "reference": "Patient/ccs-fit-just-recent-enough"
   },
   "performer": [
     {
       "reference": "Organization/clinical-labs-hawaii"
     }
   ],
-  "effectiveDateTime": "2020-12-31"
+  "effectiveDateTime": "2021-01-01"
 }

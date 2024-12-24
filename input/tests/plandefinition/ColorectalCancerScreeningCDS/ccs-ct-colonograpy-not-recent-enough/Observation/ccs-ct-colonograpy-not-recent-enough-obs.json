@@ -1,6 +1,6 @@
 {
-  "resourceType": "observaton",
-  "id": "ccs-ct-colonograpy-just-recent-enough-obs",
+  "resourceType": "Observation",
+  "id": "ccs-ct-colonograpy-not-recent-enough-obs",
   "status": "final",
   "category": [
     {
@@ -23,12 +23,12 @@
     "text": "CT colonography"
   },
   "subject": {
-    "reference": "Patient/ccs-ct-colonograpy-just-recent-enough"
+    "reference": "Patient/ccs-ct-colonograpy-not-recent-enough"
   },
   "performer": [
     {
       "reference": "Organization/adventist-health-castle"
     }
   ],
-  "effectiveDateTime": "2019-01-01"
+  "effectiveDateTime": "2018-12-31"
 }

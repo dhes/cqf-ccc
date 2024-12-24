@@ -1,0 +1,9 @@
+<id> <description> <actionNeeded?> <birthDate> <cptCode> <cptDisplay> <cptDescription> <maxInterval>
+"sigmoidoscopy-recent" "sigmoidoscopy well within 5 years" false "1964-01-01" "http://snomed.info/sct" "44441009" "Flexible fiberoptic sigmoidoscopy (procedure)" "Sigmoidoscopy" 5
+"sigmoidoscopy-not-recent-enough" "sigmoidoscopy 5 years and 1 day ago" true "1964-01-01" "http://snomed.info/sct" "44441009" "Flexible fiberoptic sigmoidoscopy (procedure)" "Sigmoidoscopy" 5
+"sigmoidoscopy-just-recent-enough" "sigmoidoscopy 5 years ago to the day" false "1964-01-01" "http://snomed.info/sct" "44441009" "Flexible fiberoptic sigmoidoscopy (procedure)" "Sigmoidoscopy" 5
+"colectomy" "total colectomy procedure" true "1964-01-01" "http://snomed.info/sct" "26390003" "Total colectomy (procedure)" "Total colectomy" 10
+
+NOTES: 
+- effective date defaults to middle of testing interval. manually adjust as needed. 
+- the the case of colectomy, the interval is set to 0 and the performed element must be set manually

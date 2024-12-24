@@ -7,8 +7,8 @@ include FHIRCommon version '4.0.1' called FC
 include ColorectalCancerConcepts called Cx
 
 parameter "Reference dateTime" DateTime //Date
-default Date(2024, 1, 1) // for testing using Execute CQL
-  // default Today() // for testing within a CQL Testing Framework project
+// default Date(2024, 1, 1) // for testing using Execute CQL
+  default Today() // for testing within a CQL Testing Framework project
 
 // parameter "Measurement Period" Interval<DateTime>
 //   default Interval[Now() - 1 year, Now()]
@@ -27,7 +27,7 @@ define function MostRecentProcedure(procedures List<Procedure>):
 define function MostRecentObservation(observations List<Observation>):
   Last(
     observations O
-      sort by issued asc
+      sort by date from issued asc
   )
 
 // define function IssuedWithin(observations List<Observation>, lookback System.Quantity):
@@ -77,9 +77,12 @@ define "Fecal Occult Blood Test Result":
 define "Most Recent Fecal Occult Blood Test Result":
   MostRecentObservation("Fecal Occult Blood Test Result")
 
-// define "Fecal Occult Blood Test Result Within 1 Year":
-//   "Fecal Occult Blood Test Result" R
+define "Fecal Occult Blood Test Result Within 1 Year":
+  "Fecal Occult Blood Test Result" R
 //     where R.issued 1 year or less on or before ReferenceDate
+    where date from R.effective is not null
+      and date from R.effective <= date from ReferenceDate
+      and date from R.effective >= date from (date from ReferenceDate - 1 year)
 
 define "Fecal Immunochemical Test DNA Result":
   [Observation: Cx."FIT DNA"] FitDNA
@@ -89,9 +92,12 @@ define "Fecal Immunochemical Test DNA Result":
 define "Most Recent Fecal Immunochemical Test DNA Result":
   MostRecentObservation("Fecal Immunochemical Test DNA Result")
 
-// define "Fecal Immunochemical Test DNA Result Within 3 Years":
-//   "Fecal Immunochemical Test DNA Result" R
-//     where R.issued 3 years or less on or before ReferenceDate
+define "Fecal Immunochemical Test DNA Result Within 3 Years":
+  "Fecal Immunochemical Test DNA Result" R
+    // where R.issued 3 years or less on or before ReferenceDate
+    where date from R.effective is not null
+      and date from R.effective <= date from ReferenceDate
+      and date from R.effective >= date from (date from ReferenceDate - 3 years)
 
 define "CT Colonography Performed":
   [Procedure: Cx."CT Colonography"] Colonography
@@ -132,12 +138,10 @@ define "Colonoscopy Performed":
 define "Most Recent Colonoscopy Performed":  //orphaned
   MostRecentProcedure("Colonoscopy Performed")
 
-// define "Colonoscopy Performed Within 10 Years":
-//   "Colonoscopy Performed" P
-//     where FC.ToInterval(P.performed) ends 10 years or less on or before ReferenceDate
 
 define "Colonoscopy Performed Within 10 Years":
   "Colonoscopy Performed" P
+//     where FC.ToInterval(P.performed) ends 10 years or less on or before ReferenceDate
     where date from P.performed is not null
       and date from P.performed <= date from ReferenceDate
       and date from P.performed >= date from (date from ReferenceDate - 10 years)

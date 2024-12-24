@@ -21,20 +21,12 @@ There are so many different ways to screen. For now we just have colonoscopy tes
 
 note: MostRecent is only used in the rationale cql
 
-Sigmoidoscopy sequence: 
-- "Flexible Sigmoidoscopy Performed"
-- "Flexible Sigmoidoscopy Performed Within 5 Years"
-- TestUpToDate
-
-note: MostRecent is only used in the rationale cql
-
-Colonoscopy sequence: 
-- "Colonoscopy Performed"
-- "Most Recent Colonoscopy Performed"
-- "Colonoscopy Performed Within 10 Years"
-- TestUpToDate
-
-
-Change Sigmoidoscopy sequence to: 
-- "Flexible Sigmoidoscopy Performed"
-- "Most Recent Sigmoidoscopy Performed"
+Next proposed test cases
+- ct-colonograpy-just-recent-enough => negative
+- ct-colonograpy-not-recent-enough => positive
+- fobt-just-recent-enough => negative
+- fobt-not-recent-enough => positive
+- fit-just-recent-enough => negative
+- fit-not-recent-enough => positive
+- colon-cancer => negative
+- status-total-colectomy => negative

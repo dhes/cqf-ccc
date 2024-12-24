@@ -493,7 +493,7 @@
             "_id": "e7341c3c-f4b7-4aee-ad24-7d241daccb66",
             "colId": "c28a7adf-96a0-4919-baee-d6adba42d602",
             "containerId": "",
-            "name": "test colonoscopy-just-recent-enough",
+            "name": "test sigmoidoscopy-just-recent-enough => no action",
             "url": "PlanDefinition/ColorectalCancerScreeningCDS/$apply",
             "method": "POST",
             "sortNum": 40233.3,
@@ -503,6 +503,294 @@
             "body": {
                 "type": "json",
                 "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"subject\",\n      \"valueString\": \"Patient/ccs-sigmoidoscopy-just-recent-enough\"\n    },\n    {\n      \"name\": \"parameters\",\n      \"resource\": {\n        \"resourceType\": \"Parameters\",\n        \"parameter\": [\n          {\n            \"name\": \"Reference dateTime\",\n            \"valueDateTime\": \"2024-01-01\"\n          }\n        ]\n      }\n    }\n  ]\n}\n",
+                "form": []
+            },
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "// negative test case",
+                            "let containsOperationOutcome = tc.response.json.contained &&",
+                            "                               tc.response.json.contained.some(item => item.resourceType === \"OperationOutcome\");",
+                            "",
+                            "let requestGroupWithAction = tc.response.json.contained &&",
+                            "                             tc.response.json.contained.find(item => ",
+                            "                                 item.resourceType === \"RequestGroup\" && item.action);",
+                            "",
+                            "let success = !containsOperationOutcome && !requestGroupWithAction;",
+                            "",
+                            "tc.test(\"No OperationOutcome and no RequestGroup with action attribute present\", success);"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "efc9ede1-adc6-4473-a50a-38a9250bfafa",
+            "colId": "c28a7adf-96a0-4919-baee-d6adba42d602",
+            "containerId": "",
+            "name": "colon-cancer => no action",
+            "url": "PlanDefinition/ColorectalCancerScreeningCDS/$apply",
+            "method": "POST",
+            "sortNum": 45233.3,
+            "created": "2024-12-24T00:06:30.797Z",
+            "modified": "2024-12-24T04:56:02.587Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"subject\",\n      \"valueString\": \"Patient/ccs-colon-cancer\"\n    },\n    {\n      \"name\": \"parameters\",\n      \"resource\": {\n        \"resourceType\": \"Parameters\",\n        \"parameter\": [\n          {\n            \"name\": \"Reference dateTime\",\n            \"valueDateTime\": \"2024-01-01\"\n          }\n        ]\n      }\n    }\n  ]\n}\n",
+                "form": []
+            },
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "// negative test case",
+                            "let containsOperationOutcome = tc.response.json.contained &&",
+                            "                               tc.response.json.contained.some(item => item.resourceType === \"OperationOutcome\");",
+                            "",
+                            "let requestGroupWithAction = tc.response.json.contained &&",
+                            "                             tc.response.json.contained.find(item => ",
+                            "                                 item.resourceType === \"RequestGroup\" && item.action);",
+                            "",
+                            "let success = !containsOperationOutcome && !requestGroupWithAction;",
+                            "",
+                            "tc.test(\"No OperationOutcome and no RequestGroup with action attribute present\", success);"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "0a879b8a-b72a-42e0-b015-fa18fa6bbdf9",
+            "colId": "c28a7adf-96a0-4919-baee-d6adba42d602",
+            "containerId": "",
+            "name": "ct-colonograpy-not-recent-enough => action",
+            "url": "PlanDefinition/ColorectalCancerScreeningCDS/$apply",
+            "method": "POST",
+            "sortNum": 42889.6,
+            "created": "2024-12-24T00:06:35.171Z",
+            "modified": "2024-12-24T04:55:43.413Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"subject\",\n      \"valueString\": \"Patient/ccs-ct-colonography-not-recent-enough\"\n    },\n    {\n      \"name\": \"parameters\",\n      \"resource\": {\n        \"resourceType\": \"Parameters\",\n        \"parameter\": [\n          {\n            \"name\": \"Reference dateTime\",\n            \"valueDateTime\": \"2024-01-01\"\n          }\n        ]\n      }\n    }\n  ]\n}\n",
+                "form": []
+            },
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "// positive test case",
+                            "let containsOperationOutcome = tc.response.json.contained &&",
+                            "                               tc.response.json.contained.some(item => item.resourceType === \"OperationOutcome\");",
+                            "",
+                            "let requestGroupWithAction = tc.response.json.contained &&",
+                            "                             tc.response.json.contained.find(item => ",
+                            "                                 item.resourceType === \"RequestGroup\" && item.action);",
+                            "",
+                            "let success = !containsOperationOutcome && !!requestGroupWithAction;",
+                            "",
+                            "tc.test(\"No OperationOutcome. RequestGroup.action is present\", success);"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "ae9453ae-9646-4dca-9fb7-5bb6f4d87723",
+            "colId": "c28a7adf-96a0-4919-baee-d6adba42d602",
+            "containerId": "",
+            "name": "ct-colonograpy-just-recent-enough => no action",
+            "url": "PlanDefinition/ColorectalCancerScreeningCDS/$apply",
+            "method": "POST",
+            "sortNum": 42733.3,
+            "created": "2024-12-24T00:06:39.768Z",
+            "modified": "2024-12-24T04:55:39.072Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"subject\",\n      \"valueString\": \"Patient/ccs-ct-colonography-just-recent-enough\"\n    },\n    {\n      \"name\": \"parameters\",\n      \"resource\": {\n        \"resourceType\": \"Parameters\",\n        \"parameter\": [\n          {\n            \"name\": \"Reference dateTime\",\n            \"valueDateTime\": \"2024-01-01\"\n          }\n        ]\n      }\n    }\n  ]\n}\n",
+                "form": []
+            },
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "// negative test case",
+                            "let containsOperationOutcome = tc.response.json.contained &&",
+                            "                               tc.response.json.contained.some(item => item.resourceType === \"OperationOutcome\");",
+                            "",
+                            "let requestGroupWithAction = tc.response.json.contained &&",
+                            "                             tc.response.json.contained.find(item => ",
+                            "                                 item.resourceType === \"RequestGroup\" && item.action);",
+                            "",
+                            "let success = !containsOperationOutcome && !requestGroupWithAction;",
+                            "",
+                            "tc.test(\"No OperationOutcome and no RequestGroup with action attribute present\", success);"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "3138d492-602b-427e-9e52-22426c174dd9",
+            "colId": "c28a7adf-96a0-4919-baee-d6adba42d602",
+            "containerId": "",
+            "name": "fit-not-recent-enough => action",
+            "url": "PlanDefinition/ColorectalCancerScreeningCDS/$apply",
+            "method": "POST",
+            "sortNum": 43983.3,
+            "created": "2024-12-24T00:07:02.943Z",
+            "modified": "2024-12-24T04:54:22.271Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"subject\",\n      \"valueString\": \"Patient/ccs-fit-not-recent-enough\"\n    },\n    {\n      \"name\": \"parameters\",\n      \"resource\": {\n        \"resourceType\": \"Parameters\",\n        \"parameter\": [\n          {\n            \"name\": \"Reference dateTime\",\n            \"valueDateTime\": \"2024-01-01\"\n          }\n        ]\n      }\n    }\n  ]\n}\n",
+                "form": []
+            },
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "// positive test case",
+                            "let containsOperationOutcome = tc.response.json.contained &&",
+                            "                               tc.response.json.contained.some(item => item.resourceType === \"OperationOutcome\");",
+                            "",
+                            "let requestGroupWithAction = tc.response.json.contained &&",
+                            "                             tc.response.json.contained.find(item => ",
+                            "                                 item.resourceType === \"RequestGroup\" && item.action);",
+                            "",
+                            "let success = !containsOperationOutcome && !!requestGroupWithAction;",
+                            "",
+                            "tc.test(\"No OperationOutcome. RequestGroup.action is present\", success);"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "983a8b2e-b1a1-44e6-ae80-588a02a5e3ce",
+            "colId": "c28a7adf-96a0-4919-baee-d6adba42d602",
+            "containerId": "",
+            "name": "fit-just-recent-enough => no action",
+            "url": "PlanDefinition/ColorectalCancerScreeningCDS/$apply",
+            "method": "POST",
+            "sortNum": 43358.3,
+            "created": "2024-12-24T00:07:06.288Z",
+            "modified": "2024-12-24T04:54:12.273Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"subject\",\n      \"valueString\": \"Patient/ccs-fit-just-recent-enough\"\n    },\n    {\n      \"name\": \"parameters\",\n      \"resource\": {\n        \"resourceType\": \"Parameters\",\n        \"parameter\": [\n          {\n            \"name\": \"Reference dateTime\",\n            \"valueDateTime\": \"2024-01-01\"\n          }\n        ]\n      }\n    }\n  ]\n}\n",
+                "form": []
+            },
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "// negative test case",
+                            "let containsOperationOutcome = tc.response.json.contained &&",
+                            "                               tc.response.json.contained.some(item => item.resourceType === \"OperationOutcome\");",
+                            "",
+                            "let requestGroupWithAction = tc.response.json.contained &&",
+                            "                             tc.response.json.contained.find(item => ",
+                            "                                 item.resourceType === \"RequestGroup\" && item.action);",
+                            "",
+                            "let success = !containsOperationOutcome && !requestGroupWithAction;",
+                            "",
+                            "tc.test(\"No OperationOutcome and no RequestGroup with action attribute present\", success);"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "ffbd78fc-6534-4fd0-9b15-0a187ffcdef3",
+            "colId": "c28a7adf-96a0-4919-baee-d6adba42d602",
+            "containerId": "",
+            "name": "fobt-just-recent-enough => no action",
+            "url": "PlanDefinition/ColorectalCancerScreeningCDS/$apply",
+            "method": "POST",
+            "sortNum": 43045.8,
+            "created": "2024-12-24T00:07:11.358Z",
+            "modified": "2024-12-24T04:53:58.752Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"subject\",\n      \"valueString\": \"Patient/ccs-fobt-just-recent-enough\"\n    },\n    {\n      \"name\": \"parameters\",\n      \"resource\": {\n        \"resourceType\": \"Parameters\",\n        \"parameter\": [\n          {\n            \"name\": \"Reference dateTime\",\n            \"valueDateTime\": \"2024-01-01\"\n          }\n        ]\n      }\n    }\n  ]\n}\n",
+                "form": []
+            },
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "// negative test case",
+                            "let containsOperationOutcome = tc.response.json.contained &&",
+                            "                               tc.response.json.contained.some(item => item.resourceType === \"OperationOutcome\");",
+                            "",
+                            "let requestGroupWithAction = tc.response.json.contained &&",
+                            "                             tc.response.json.contained.find(item => ",
+                            "                                 item.resourceType === \"RequestGroup\" && item.action);",
+                            "",
+                            "let success = !containsOperationOutcome && !requestGroupWithAction;",
+                            "",
+                            "tc.test(\"No OperationOutcome and no RequestGroup with action attribute present\", success);"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "d4938e15-8d1f-40a8-ba25-d8bad3cc9d87",
+            "colId": "c28a7adf-96a0-4919-baee-d6adba42d602",
+            "containerId": "",
+            "name": "test fobt-not-recent-enough => action",
+            "url": "PlanDefinition/ColorectalCancerScreeningCDS/$apply",
+            "method": "POST",
+            "sortNum": 43202.1,
+            "created": "2024-12-24T00:07:28.496Z",
+            "modified": "2024-12-24T04:54:03.207Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"subject\",\n      \"valueString\": \"Patient/ccs-fobt-not-recent-enough\"\n    },\n    {\n      \"name\": \"parameters\",\n      \"resource\": {\n        \"resourceType\": \"Parameters\",\n        \"parameter\": [\n          {\n            \"name\": \"Reference dateTime\",\n            \"valueDateTime\": \"2024-01-01\"\n          }\n        ]\n      }\n    }\n  ]\n}\n",
+                "form": []
+            },
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "// positive test case",
+                            "let containsOperationOutcome = tc.response.json.contained &&",
+                            "                               tc.response.json.contained.some(item => item.resourceType === \"OperationOutcome\");",
+                            "",
+                            "let requestGroupWithAction = tc.response.json.contained &&",
+                            "                             tc.response.json.contained.find(item => ",
+                            "                                 item.resourceType === \"RequestGroup\" && item.action);",
+                            "",
+                            "let success = !containsOperationOutcome && !!requestGroupWithAction;",
+                            "",
+                            "tc.test(\"No OperationOutcome. RequestGroup.action is present\", success);"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "1d8630e4-144a-43de-87c3-483cd4894259",
+            "colId": "c28a7adf-96a0-4919-baee-d6adba42d602",
+            "containerId": "",
+            "name": "status-total-colectomy => no action",
+            "url": "PlanDefinition/ColorectalCancerScreeningCDS/$apply",
+            "method": "POST",
+            "sortNum": 55233.3,
+            "created": "2024-12-24T04:50:27.568Z",
+            "modified": "2024-12-24T04:56:14.119Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"subject\",\n      \"valueString\": \"Patient/ccs-status-colectomy\"\n    },\n    {\n      \"name\": \"parameters\",\n      \"resource\": {\n        \"resourceType\": \"Parameters\",\n        \"parameter\": [\n          {\n            \"name\": \"Reference dateTime\",\n            \"valueDateTime\": \"2024-01-01\"\n          }\n        ]\n      }\n    }\n  ]\n}\n",
                 "form": []
             },
             "postReq": {

@@ -1,0 +1,28 @@
+{
+  "resourceType": "Patient",
+  "id": "ccs-fobt-not-recent-enough",
+  "identifier": [
+    {
+      "system": "http://example.org/colon-cancer-screening",
+      "value": "fobt-not-recent-enough"
+    }
+  ],
+  "extension": [
+    {
+      "url": "http://example.org/fhir/StructureDefinition/patient-annotation",
+      "valueString": "FOBT 1 year plus one day ago => true"
+    }
+  ],
+  "name": [
+    {
+      "family": "Nobody",
+      "given": [
+        "Absolutely"
+      ]
+    }
+  ],
+  "birthDate": "1964-01-01",
+  "gender": "male",
+  "active": true,
+  "deceasedBoolean": false
+}

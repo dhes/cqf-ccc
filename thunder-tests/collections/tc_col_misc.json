@@ -4,7 +4,20 @@
     "created": "2024-12-21T00:10:15.863Z",
     "sortNum": 40000,
     "folders": [],
-    "requests": [],
+    "requests": [
+        {
+            "_id": "df683682-0622-4c47-9de1-9801183ef7e5",
+            "colId": "8c071589-ca42-4598-8f58-3dc08ceaf269",
+            "containerId": "",
+            "name": "list organizations",
+            "url": "Organization",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-12-24T20:06:42.042Z",
+            "modified": "2024-12-24T20:06:47.932Z",
+            "headers": []
+        }
+    ],
     "settings": {
         "headers": [
             {

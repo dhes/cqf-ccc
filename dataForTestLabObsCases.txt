@@ -1,0 +1,11 @@
+<id>											<description> 			<expectedOutcome> <birthDate> <obsSystem> 		<obsCode> 		<obsDisplay> 																												<obsDescription> <maxInterval>
+"fobt-just-recent-enough" "FOBT 1 year ago to the day" false "1964-01-01" "http://loinc.org" "29771-3" "Hemoglobin.gastrointestinal.lower [Presence] in Stool by Immunoassay" "FOBT" 1
+"fobt-not-recent-enough" "FOBT 1 year plus one day ago" true "1964-01-01" "http://loinc.org" "29771-3" "Hemoglobin.gastrointestinal.lower [Presence] in Stool by Immunoassay" "FOBT" 1
+"fit-just-recent-enough" "FIT 3 years ago to the day" false "1964-01-01" "http://loinc.org" "77354-9" "Noninvasive colorectal cancer DNA and occult blood screening [Presence] in Stool" "FIT DNA" 3
+"fit-not-recent-enough" "FIT 3 years plus one day ago" true "1964-01-01" "http://loinc.org" "77354-9" "Noninvasive colorectal cancer DNA and occult blood screening [Presence] in Stool" "FIT DNA" 3
+"ct-colonograpy-not-recent-enough" "CT colonograpy 5 years and 1 day ago" true "1964-01-01" "http://loinc.org" "60515-4" "CT Colon and Rectum W air contrast PR" "CT colonography" 5
+"ct-colonograpy-just-recent-enough" "CT colonograpy 5 years ago to the day" false "1964-01-01" "http://loinc.org" "60515-4" "CT Colon and Rectum W air contrast PR" "CT colonography" 5
+
+NOTES: 
+- for imaging test change the category from laboratory to imaging
+- effective date defaults to middle of testing interval. manually adjust as needed. 

@@ -7,8 +7,8 @@ include FHIRCommon version '4.0.1' called FC
 include ColorectalCancerConcepts called Cx
 
 parameter "Reference dateTime" DateTime //Date
-default Date(2024, 1, 1) // for testing using Execute CQL
-  // default Today() // for testing within a CQL Testing Framework project
+// default Date(2024, 1, 1) // for testing using Execute CQL
+  default Today() // for testing within a CQL Testing Framework project
 
 // parameter "Measurement Period" Interval<DateTime>
 //   default Interval[Now() - 1 year, Now()]
@@ -100,18 +100,18 @@ define "Fecal Immunochemical Test DNA Result Within 3 Years":
       and date from R.effective >= date from (date from ReferenceDate - 3 years)
 
 define "CT Colonography Performed":
-  [Procedure: Cx."CT Colonography"] Colonography
-    where Colonography.status = 'completed'
+  [Observation: Cx."CT Colonography"] Colonography
+    where Colonography.status = 'final'
 
 define "Most Recent CT Colonography Performed":
-  MostRecentProcedure("CT Colonography Performed")
+  MostRecentObservation("CT Colonography Performed")
 
 define "CT Colonography Performed Within 5 Years":
   "CT Colonography Performed" P
     // where FC.ToInterval(P.performed) ends 5 years or less on or before ReferenceDate
-    where date from P.performed is not null
-      and date from P.performed <= date from ReferenceDate
-      and date from P.performed >= date from (date from ReferenceDate - 5 years)
+    where date from P.effective is not null
+      and date from P.effective <= date from ReferenceDate
+      and date from P.effective >= date from (date from ReferenceDate - 5 years)
 
 
 define "Flexible Sigmoidoscopy Performed":

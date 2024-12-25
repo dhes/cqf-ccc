@@ -7,8 +7,8 @@ include FHIRCommon version '4.0.1' called FC
 include ColorectalCancerConcepts called Cx
 
 parameter "Reference dateTime" DateTime //Date
-// default Date(2024, 1, 1) // for testing using Execute CQL
-  default Today() // for testing within a CQL Testing Framework project
+default Date(2024, 1, 1) // for testing using Execute CQL
+  // default Today() // for testing within a CQL Testing Framework project
 
 // parameter "Measurement Period" Interval<DateTime>
 //   default Interval[Now() - 1 year, Now()]
@@ -27,7 +27,7 @@ define function MostRecentProcedure(procedures List<Procedure>):
 define function MostRecentObservation(observations List<Observation>):
   Last(
     observations O
-      sort by date from issued asc
+      sort by date from effective asc
   )
 
 // define function IssuedWithin(observations List<Observation>, lookback System.Quantity):
@@ -147,9 +147,9 @@ define "Colonoscopy Performed Within 10 Years":
       and date from P.performed >= date from (date from ReferenceDate - 10 years)
 
 define TestUpToDate:
-  // exists "Fecal Occult Blood Test Result Within 1 Year"
-    // exists "Fecal Immunochemical Test DNA Result Within 3 Years"
-    exists "CT Colonography Performed Within 5 Years"
+  exists "Fecal Occult Blood Test Result Within 1 Year"
+    or exists "Fecal Immunochemical Test DNA Result Within 3 Years"
+    or exists "CT Colonography Performed Within 5 Years"
     or exists "Flexible Sigmoidoscopy Performed Within 5 Years"
     or exists "Colonoscopy Performed Within 10 Years"
 

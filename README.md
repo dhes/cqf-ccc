@@ -22,8 +22,8 @@ There are so many different ways to screen. For now we just have colonoscopy tes
 note: MostRecent is only used in the rationale cql
 
 Next proposed test cases
-- ct-colonograpy-just-recent-enough => negative
-- ct-colonograpy-not-recent-enough => positive
+- ct-colonography-just-recent-enough => negative
+- ct-colonography-not-recent-enough => positive
 - fobt-just-recent-enough => negative
 - fobt-not-recent-enough => positive
 - fit-just-recent-enough => negative

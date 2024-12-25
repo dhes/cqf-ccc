@@ -1,6 +1,6 @@
 {
   "resourceType": "Observation",
-  "id": "ccs-ct-colonograpy-not-recent-enough-obs",
+  "id": "ccs-ct-colonography-not-recent-enough-obs",
   "status": "final",
   "category": [
     {
@@ -23,12 +23,14 @@
     "text": "CT colonography"
   },
   "subject": {
-    "reference": "Patient/ccs-ct-colonograpy-not-recent-enough"
+    "reference": "Patient/ccs-ct-colonography-not-recent-enough"
   },
   "performer": [
     {
       "reference": "Organization/adventist-health-castle"
     }
   ],
+  "valueBoolean": false,
+  "note": "no evidence of colorectal cancer",
   "effectiveDateTime": "2018-12-31"
 }

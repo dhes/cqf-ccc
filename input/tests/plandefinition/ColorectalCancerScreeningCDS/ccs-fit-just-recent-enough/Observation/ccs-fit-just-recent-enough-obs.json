@@ -30,5 +30,6 @@
       "reference": "Organization/clinical-labs-hawaii"
     }
   ],
+  "valueBoolean": false,
   "effectiveDateTime": "2021-01-01"
 }

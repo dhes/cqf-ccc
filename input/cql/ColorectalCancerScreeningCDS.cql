@@ -55,9 +55,9 @@ define "Get Card Detail":
 
 define "Rationale":
   Coalesce({
-    // 'most recent FOBT issued on ' + ToString(date from CCE."Most Recent Fecal Occult Blood Test Result".issued),
-    // 'most recent FIT DNA issued on ' + ToString(date from CCE."Most Recent Fecal Immunochemical Test DNA Result".issued),
-    // 'most recent CT Colonography performed on ' + ToString(date from start of FC.ToInterval(CCE."Most Recent CT Colonography Performed".performed)),
+    'most recent FOBT effective on ' + ToString(date from CCE."Most Recent Fecal Occult Blood Test Result".effective),
+    'most recent FIT DNA effective on ' + ToString(date from CCE."Most Recent Fecal Immunochemical Test DNA Result".effective),
+    'most recent CT Colonography performed on ' + ToString(date from start of FC.ToInterval(CCE."Most Recent CT Colonography Performed".performed)),
     'most recent Flexible Sigmoidoscopy performed on ' + ToString(date from start of FC.ToInterval(CCE."Most Recent Flexible Sigmoidoscopy Performed".performed)), 
     'most recent Colonoscopy performed on ' + ToString(date from start of FC.ToInterval(CCE."Most Recent Colonoscopy Performed".performed)), 
     'no evidence of appropriate screening' }

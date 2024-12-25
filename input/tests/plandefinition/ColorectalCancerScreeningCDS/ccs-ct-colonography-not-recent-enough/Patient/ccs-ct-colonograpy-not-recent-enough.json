@@ -1,16 +1,16 @@
 {
   "resourceType": "Patient",
-  "id": "ccs-ct-colonograpy-not-recent-enough",
+  "id": "ccs-ct-colonography-not-recent-enough",
   "identifier": [
     {
       "system": "http://example.org/colon-cancer-screening",
-      "value": "ct-colonograpy-not-recent-enough"
+      "value": "ct-colonography-not-recent-enough"
     }
   ],
   "extension": [
     {
       "url": "http://example.org/fhir/StructureDefinition/patient-annotation",
-      "valueString": "CT colonograpy 5 years and 1 day ago => true"
+      "valueString": "CT colonography 5 years and 1 day ago => true"
     }
   ],
   "name": [

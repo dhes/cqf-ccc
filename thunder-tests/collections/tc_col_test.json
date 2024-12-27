@@ -812,6 +812,67 @@
                     }
                 ]
             }
+        },
+        {
+            "_id": "da55225d-bee2-4435-a6c6-514b320e17b1",
+            "colId": "c28a7adf-96a0-4919-baee-d6adba42d602",
+            "containerId": "",
+            "name": "fit-picks-most-recent => no action",
+            "url": "PlanDefinition/ColorectalCancerScreeningCDS/$apply",
+            "method": "POST",
+            "sortNum": 53983.3,
+            "created": "2024-12-26T18:32:39.898Z",
+            "modified": "2024-12-27T17:59:10.153Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n    {\n      \"name\": \"subject\",\n      \"valueString\": \"Patient/ccs-fit-picks-most-recent\"\n    },\n    {\n      \"name\": \"parameters\",\n      \"resource\": {\n        \"resourceType\": \"Parameters\",\n        \"parameter\": [\n          {\n            \"name\": \"Reference dateTime\",\n            \"valueDateTime\": \"2024-01-01\"\n          }\n        ]\n      }\n    }\n  ]\n}\n",
+                "form": []
+            },
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "// First find the RequestGroup and extract the needs-action flag",
+                            "let requestGroup = tc.response.json.contained?.find(item => ",
+                            "    item.resourceType === \"RequestGroup\");",
+                            "",
+                            "let needsAction = requestGroup?.action?.find(act => ",
+                            "    act.title === \"set-needs-action\")?.description === \"true\";",
+                            "",
+                            "// Check for OperationOutcome errors",
+                            "let containsOperationOutcome = tc.response.json.contained &&",
+                            "    tc.response.json.contained.some(item => item.resourceType === \"OperationOutcome\");",
+                            "",
+                            "// Look for any action besides the flag-setting action",
+                            "let hasSecondAction = requestGroup?.action?.some(act => ",
+                            "    act.title !== \"set-needs-action\");",
+                            "",
+                            "// Determine success based on all conditions",
+                            "let success;",
+                            "let testMessage;",
+                            "",
+                            "if (containsOperationOutcome) {",
+                            "    success = false;",
+                            "    testMessage = \"Failed: OperationOutcome error present\";",
+                            "} else {",
+                            "    // No OperationOutcome error, now check action logic",
+                            "    if (needsAction) {",
+                            "        success = hasSecondAction;",
+                            "        testMessage = \"No OperationOutcome. Action required and \" + ",
+                            "            (success ? \"correctly present\" : \"incorrectly missing\");",
+                            "    } else {",
+                            "        success = !hasSecondAction;",
+                            "        testMessage = \"No OperationOutcome. No action required and \" + ",
+                            "            (success ? \"correctly absent\" : \"incorrectly present\");",
+                            "    }",
+                            "}",
+                            "",
+                            "tc.test(testMessage, success);"
+                        ]
+                    }
+                ]
+            }
         }
     ],
     "settings": {

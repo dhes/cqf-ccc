@@ -36,7 +36,7 @@ function generateObservationResource(
   obsCode,
   obsDisplay,
   obsDescription,
-  effectiveDate
+  obsEffective,
 ) {
   return {
     resourceType: "Observation",
@@ -71,7 +71,8 @@ function generateObservationResource(
         reference: "Organization/clinical-labs-hawaii",
       },
     ],
-    effectiveDateTime: effectiveDate.toISOString().split("T")[0],
+    effectiveDateTime: obsEffective,
+    valueBoolean: false,
   };
 }
 
@@ -90,7 +91,7 @@ async function main() {
   const obsCode = process.argv[7];
   const obsDisplay = process.argv[8];
   const obsDescription = process.argv[9];
-  const maxInterval = parseInt(process.argv[10]);
+  const obsEffective = process.argv[10];
 
   if (
     !id ||
@@ -101,20 +102,20 @@ async function main() {
     !obsCode ||
     !obsDisplay ||
     !obsDescription ||
-    !maxInterval
+    !obsEffective
   ) {
     console.error(
-      "Usage: node generateResources.js <id> <description> <expectedOutcome> <birthDate> <obsSystem> <obsCode> <obsDisplay> <obsDescription> <maxInterval>"
+      "Usage: node generateResources.js <id> <description> <expectedOutcome> <birthDate> <obsSystem> <obsCode> <obsDisplay> <obsDescription> <obsEffective>"
     );
     process.exit(1);
   }
 
-  const referenceDate = new Date("2024-01-01");
-  const performedDate = new Date(referenceDate);
+  // const referenceDate = new Date("2024-01-01");
+  // const performedDate = new Date(referenceDate);
   // performedDate.setFullYear(referenceDate.getFullYear() - maxInterval / 2);
-  const monthsOffset = Math.round((maxInterval * 12) / 2); // Convert years to months and divide by 2
-  performedDate.setFullYear(referenceDate.getFullYear());
-  performedDate.setMonth(referenceDate.getMonth() - monthsOffset);
+  // const monthsOffset = Math.round((maxInterval * 12) / 2); // Convert years to months and divide by 2
+  // performedDate.setFullYear(referenceDate.getFullYear());
+  // performedDate.setMonth(referenceDate.getMonth() - monthsOffset);
 
   const patient = generatePatientResource(
     id,
@@ -128,7 +129,7 @@ async function main() {
     obsCode,
     obsDisplay,
     obsDescription,
-    performedDate
+    obsEffective,
   );
 
   const baseDir = `input/tests/plandefinition/ColorectalCancerScreeningCDS/ccs-${id}`;

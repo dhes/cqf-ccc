@@ -1,0 +1,35 @@
+{
+  "resourceType": "Observation",
+  "id": "ccs-fit-picks-most-recent-obs",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "77354-9",
+        "display": "Noninvasive colorectal cancer DNA and occult blood screening [Presence] in Stool"
+      }
+    ],
+    "text": "FIT DNA"
+  },
+  "subject": {
+    "reference": "Patient/ccs-fit-picks-most-recent"
+  },
+  "performer": [
+    {
+      "reference": "Organization/clinical-labs-hawaii"
+    }
+  ],
+  "effectiveDateTime": "2018-01-01",
+  "valueBoolean": false
+}

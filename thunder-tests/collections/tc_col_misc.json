@@ -16,6 +16,30 @@
             "created": "2024-12-24T20:06:42.042Z",
             "modified": "2024-12-24T20:06:47.932Z",
             "headers": []
+        },
+        {
+            "_id": "e9978e5c-a276-44c0-8a3f-3718a243e7e1",
+            "colId": "8c071589-ca42-4598-8f58-3dc08ceaf269",
+            "containerId": "",
+            "name": "get a patient",
+            "url": "Patient/ccs-colectomy",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-12-26T22:51:39.551Z",
+            "modified": "2024-12-26T22:52:13.091Z",
+            "headers": []
+        },
+        {
+            "_id": "6b72f5fe-3d49-4294-b88c-ac898bd5d371",
+            "colId": "8c071589-ca42-4598-8f58-3dc08ceaf269",
+            "containerId": "",
+            "name": "get a PlanDefinition",
+            "url": "PlanDefinition/ColorectalCancerScreeningCDS",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-12-26T23:22:55.285Z",
+            "modified": "2024-12-26T23:23:05.476Z",
+            "headers": []
         }
     ],
     "settings": {

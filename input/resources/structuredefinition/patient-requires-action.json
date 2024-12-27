@@ -1,0 +1,54 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "patient-requires-action",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">This StructureDefinition defines the extension for Patient-requires-action.</div>"
+  },
+  "url": "http://cds.hopena.info/fhir/StructureDefinition/patient-requires-action",
+  "name": "PatientRequiresAction",
+  "status": "draft",
+  "description": "Indicates whether a test patient requires action for a specific intervention.",
+  "fhirVersion": "4.0.1",
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [
+    {
+      "type": "element",
+      "expression": "Patient"
+    }
+  ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Extension",
+        "path": "Extension",
+        "short": "Indicates whether a test patient requires action for a specific intervention.",
+        "definition": "This extension provides a boolean-like indication, using a string ('true' or 'false'), to determine whether a test patient requires a specific medical action."
+      },
+      {
+        "id": "Extension.url",
+        "path": "Extension.url",
+        "fixedUri": "http://cds.hopena.info/fhir/StructureDefinition/patient-requires-action"
+      },
+      {
+        "id": "Extension.value[x]",
+        "path": "Extension.value[x]",
+        "definition": "A boolean-like value represented as a string ('true' or 'false') to indicate whether a test patient requires action.",
+        "min": 1,
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://hl7.org/fhir/ValueSet/special-values"
+        }
+      }
+    ]
+  }
+}

@@ -9,7 +9,7 @@
   ],
   "extension": [
     {
-      "url": "http://example.org/fhir/StructureDefinition/patient-annotation",
+      "url": "http://cds.hopena.info/StructureDefinition/patient-requires-action",
       "valueString": "false"
     }
   ],
